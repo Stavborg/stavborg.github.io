@@ -39,9 +39,6 @@
     }
 
     header{
-      display:flex;
-      gap:18px;
-      align-items:center;
       margin-bottom:12px;
     }
 
@@ -54,10 +51,10 @@
       position:relative;
       text-shadow: 0 0 8px rgba(255,0,0,0.8), 2px 2px 0 #000;
     }
-    /* ensure logo image fits the header */
+    /* Logo in sidebar */
     .logo img{
       display:block;
-      width:240px; /* match avatar width */
+      width:280px;
       height:auto;
       max-width:100%;
       object-fit:contain;
@@ -90,16 +87,18 @@
       100%{transform:translateY(60px) rotate(6deg); opacity:0}
     }
 
-    /* Left sidebar with avatar / GIF */
+    /* Left sidebar with logo and avatar */
     .left{
-      width:220px;
-      min-height:220px;
+      width:240px;
+      min-height:500px;
       background:rgba(0,0,0,0.35);
       border:2px solid rgba(255,0,0,0.15);
-      padding:12px;
+      padding:0px;
+      margin:0px
       border-radius:6px;
       text-align:center;
       margin-right:12px;
+      align-self:flex-start;
     }
     .avatar{
       width:180px; height:120px; display:block; margin:0 auto 8px; object-fit:cover; border-radius:4px;
@@ -115,7 +114,7 @@
     .box{
       background: linear-gradient(180deg, rgba(20,0,0,0.25), rgba(10,0,0,0.05));
       border:1px dashed rgba(140,0,0,0.25);
-      padding:12px;
+      padding:0px;
       margin-bottom:12px;
       border-radius:6px;
     }
@@ -179,34 +178,32 @@
 </head>
 <body>
   <div class="page garish">
-    <header>
-      <div class="logo"><img src="assets/logo.png" alt="STAVB.ORG"></div>
-      <div style="flex:1">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div style="font-size:12px;color:#f9dede">One man, many riffs, zero social life.</div>
-          <div class="counter">Visitors since 10/31/2025: <span id="visitor-count">000000</span></div>
-        </div>
-        <div class="marquee">
-          <marquee behavior="scroll" direction="left">🩸 WELCOME TO MY HOMEPAGE 🩸</marquee>
-        </div>
-      </div>
-    </header>
-
     <div class="main-row">
       <aside class="left box">
-        <!-- You can replace the image URL with your own GIF or drop in /assets/avatar.gif -->
-        <img class="avatar" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" alt="bloody flame gif" />
-        <div class="badge">STAVB — Official Shrine</div>
-        <div style="margin-top:8px;font-size:12px;color:#f0dcdc">Fan art, rants, and terrible midi playlists</div>
+        <!-- Logo at the top of sidebar -->
+        <div class="logo" style="margin-bottom:16px;">
+          <img src="assets/logo.png" alt="STAVB.ORG">
+        </div>
+
       </aside>
 
       <section class="content">
+        <header>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="font-size:12px;color:#f9dede">One man, many riffs, zero social life.</div>
+            <div class="counter">Visitors since 10/31/2025: <span id="visitor-count">000000</span></div>
+          </div>
+          <div class="marquee">
+            <marquee behavior="scroll" direction="left">🩸 WELCOME TO MY HOMEPAGE 🩸</marquee>
+          </div>
+        </header>
+        
         <nav>
           <a class="nav-link" href="#home">HOME</a>
           <a class="nav-link" href="#about">ABOUT</a>
           <a class="nav-link" href="#media">MEDIA</a>
-          <a class="nav-link" href="#guestbook">GUESTBOOK</a>
           <a class="nav-link" href="#links">LINKS</a>
+          <a class="nav-link" href="#guestbook">GUESTBOOK</a>
         </nav>
 
         <article class="box" id="home">
@@ -217,7 +214,7 @@
 
         <article class="box" id="about">
           <h1>ABOUT</h1>
-          <p style="margin-top:8px">I am Jonas, a <span id="current-age">calculating...</span> year old Swede who lives in Argentina with my wife and son. I love to spend time with my family, play/record music, video games, and lately getting into coding a little bit.</p>
+          <p style="margin-top:8px">I’m Jonas, a <span id="current-age">calculating...</span>-year-old Swede living in Argentina with my wife and son. I love spending time with family, making and recording music, playing video games, and lately diving into a bit of coding.</p>
         </article>
         <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
 
@@ -225,6 +222,15 @@
           <h1>MEDIA</h1>
           <p style="margin-top:8px;margin-bottom:12px">Here I post some of my music:</p>
           <iframe width="100%" height="150" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1363910395&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/stavborg" title="Jonas Stavborg" target="_blank" style="color: #cccccc; text-decoration: none;">Jonas Stavborg</a> · <a href="https://soundcloud.com/stavborg/call-for-me" title="Call for me" target="_blank" style="color: #cccccc; text-decoration: none;">Call for me</a></div>
+        </article>
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
+
+        <article class="box" id="links">
+          <h1>LINKS</h1>
+          <ul class="links-list">
+            <li><a href="https://alteredrage.bandcamp.com/">Altered Rage</a></li>
+            <li><a href="https://www.axisofdespair.com/">Axis of Despair</a></li>
+          </ul>
         </article>
         <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
 
@@ -258,21 +264,12 @@
           </form>
         </article>
         <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
-
-        <article class="box" id="links">
-          <h1>LINKS</h1>
-          <ul class="links-list">
-            <li><a href="https://alteredrage.bandcamp.com/">Altered Rage</a></li>
-            <li><a href="https://www.axisofdespair.com/">Axis of Despair</a></li>
-          </ul>
-        </article>
-        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
       </section>
     </div>
 
     <footer>
       <div style="text-align:center;color:#f0dcdc;font-size:11px;margin-top:12px">
-        &copy; 2023 Stavb.org - All rights reserved. | <a href="#guestbook" style="color:#ffbdbd;text-decoration:underline">Sign the guestbook</a>
+        &copy; <span id="current-year">2023</span> Stavb.org - All rights reserved. | <a href="#guestbook" style="color:#ffbdbd;text-decoration:underline">Sign the guestbook</a>
       </div>
     </footer>
   </div>
@@ -439,6 +436,12 @@
       const ageElement = document.getElementById('current-age');
       if (ageElement) {
         ageElement.textContent = calculateAge();
+      }
+      
+      // Update current year in footer
+      const yearElement = document.getElementById('current-year');
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
       }
       
       // Update visitor count
