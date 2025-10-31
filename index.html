@@ -184,6 +184,7 @@
           <h1>WELCOME</h1>
           <p style="margin-top:8px;color:#ffdede">This is <strong>Stavb.org</strong>. Old-school HTML, flashing GIFs, MIDI playlists, and dramatic blood overlays. Built to offend modern minimalist sensibilities.</p>
         </article>
+        <img src="assets/bloodbar_e0.gif" alt="blood bar" style="width:100%;max-width:400px;height:auto;margin:12px 0;">
 
         <article class="box" id="band">
           <h1>THE BAND</h1>
@@ -194,6 +195,7 @@
             <li><a href="#">Compilation: Screams from the Attic — 1997</a></li>
           </ul>
         </article>
+        <img src="assets/bloodbar_e0.gif" alt="blood bar" style="width:100%;max-width:400px;height:auto;margin:12px 0;">
 
         <article class="box" id="media">
           <h1>MEDIA</h1>
@@ -204,6 +206,7 @@
             Your browser does not support the audio element.
           </audio>
         </article>
+        <img src="assets/bloodbar_e0.gif" alt="blood bar" style="width:100%;max-width:400px;height:auto;margin:12px 0;">
 
         <article class="box" id="guestbook">
           <h1>GUESTBOOK</h1>
@@ -219,6 +222,7 @@
             <div style="margin-top:8px"><button type="submit" style="padding:8px 14px;border-radius:6px;border:2px solid #3b0000;background:#1a0000;color:#ffdede;font-weight:700">SCRIBE THIS</button></div>
           </form>
         </article>
+        <img src="assets/bloodbar_e0.gif" alt="blood bar" style="width:100%;max-width:400px;height:auto;margin:12px 0;">
 
         <article class="box" id="links">
           <h1>LINKS</h1>
@@ -228,42 +232,4 @@
             <li><a href="https://example.com">Retro MIDI Archive</a></li>
           </ul>
         </article>
-
-      </section>
-    </div>
-
-    <footer>
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <div>© <strong>Stavb.org</strong> — Beware the drip. <span class="blink">THIS SITE IS A TRIBUTE TO THE 90s</span></div>
-        <div style="font-size:12px">Page built: <strong id="builddate"></strong></div>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    // Small script for dynamic date & retro console message.
-    document.getElementById('builddate').textContent = new Date().toLocaleDateString();
-    console.log('%c Welcome to Stavb.org — you found the bloodsite. ', 'background:#220000;color:#ffbdbd;padding:6px 8px;border-radius:6px');
-
-    // Add tiny visual 'blood drops' for extra 90s drama
-    (function spawnDrops(){
-      const page = document.querySelector('.page');
-      for(let i=0;i<6;i++){
-        const d = document.createElement('div');
-        d.style.position='absolute';
-        d.style.left=(10 + Math.random()*80)+'%';
-        d.style.top=(10 + Math.random()*80)+'%';
-        d.style.width='6px'; d.style.height='8px';
-        d.style.background='linear-gradient(#a30000,#3a0000)';
-        d.style.borderRadius='50%'; d.style.opacity=0.8; d.style.pointerEvents='none';
-        d.style.transform='translateY(0)';
-        d.style.transition='transform 3s linear, opacity 3s linear';
-        page.appendChild(d);
-        setTimeout(()=>{d.style.transform='translateY(60px)'; d.style.opacity='0'}, 80 + Math.random()*1200);
-        setTimeout(()=>{d.remove()}, 4200);
-      }
-      setTimeout(spawnDrops, 2500 + Math.random()*2500);
-    })();
-  </script>
-</body>
-</html>
+        <img src="assets/bloodbar_e0.gif" alt="blood bar" style="width:100%;max-width:400px;height:auto;margin:12px 0;">
