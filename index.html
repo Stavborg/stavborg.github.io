@@ -1,6 +1,27 @@
+<!DOCTYPE html>
 <html>
-<title>Stavb.org</title>
+<head>
+  <title>{{ page.title }}</title>
+  <style>
+    body {
+      background-color: #000;        /* Pure black background */
+      color: #ff4500;                /* Fiery orange text */
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-shadow: 0 0 5px #ff0000, 0 0 10px #ff4500; /* Firey glow */
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2, h3 { color: #ff6347; }
+    img { border: 3px dotted #ff4500; }
+    .blink { animation: blink 1s step-start infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    marquee { color: #ff8c00; font-weight: bold; }
+    a { color: #ffa500; text-decoration: underline; }
+  </style>
+</head>
 <body>
-HELLO
+  <marquee>🔥 Welcome to my fiery dark 90's page! 🔥</marquee>
+  <img src="/assets/fire.gif" alt="fire">
+  HELLO
 </body>
 </html>
