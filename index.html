@@ -1,37 +1,269 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Stavb.org — Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Stavb.org — Welcome to the Bloodsite</title>
+  <!-- Retro 90s vibes: use web font but fallback to Comic Sans-ish feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+
+    /* Background: dark, subtle moving blood smear using repeating-linear-gradient */
+    body{
+      background: #0b0202;
+      color: #f2dede;
+      font-family: 'Share Tech Mono', 'Courier New', monospace;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.3;
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(120,0,0,0.12) 0%, rgba(0,0,0,0) 12%),
+        radial-gradient(circle at 90% 80%, rgba(90,0,0,0.10) 0%, rgba(0,0,0,0) 14%),
+        repeating-linear-gradient(45deg, rgba(30,0,0,0.02) 0 6px, rgba(0,0,0,0) 6px 12px);
+      background-blend-mode: screen, screen, normal;
+      min-height:100%;
+      padding:24px;
+    }
+
+    /* Container with retro border and glow */
+    .page{
+      max-width:980px;
+      margin:0 auto;
+      background: linear-gradient(180deg, rgba(10,0,0,0.45), rgba(0,0,0,0.65));
+      border:4px solid rgba(120,0,0,0.9);
+      padding:18px;
+      border-radius:8px;
+      box-shadow: 0 0 28px rgba(220,0,0,0.12), inset 0 0 24px rgba(200,0,0,0.06);
+    }
+
+    header{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      margin-bottom:12px;
+    }
+
+    /* Logo: big pixel font, blood drip effect via pseudo elements */
+    .logo{
+      font-family: 'Press Start 2P', monospace;
+      color:#ff0000;
+      font-size:28px;
+      letter-spacing:1px;
+      position:relative;
+      text-shadow: 0 0 8px rgba(255,0,0,0.8), 2px 2px 0 #000;
+    }
+    .logo::after{
+      content: '';
+      position:absolute;
+      left:12px; top:38px;
+      width:8px; height:18px;
+      background: linear-gradient(#8a0000,#220000);
+      border-radius:4px 4px 10px 10px;
+      filter: blur(0.6px);
+      transform: rotate(10deg);
+      animation: drip 3s linear infinite;
+      opacity:0.9;
+    }
+    @keyframes drip{
+      0%{transform:translateY(0) rotate(6deg); opacity:0.95}
+      70%{transform:translateY(28px) rotate(6deg); opacity:0.7}
+      100%{transform:translateY(60px) rotate(6deg); opacity:0}
+    }
+
+    /* Left sidebar with avatar / GIF */
+    .left{
+      width:220px;
+      min-height:220px;
+      background:rgba(0,0,0,0.35);
+      border:2px solid rgba(255,0,0,0.15);
+      padding:12px;
+      border-radius:6px;
+      text-align:center;
+      margin-right:12px;
+    }
+    .avatar{
+      width:180px; height:120px; display:block; margin:0 auto 8px; object-fit:cover; border-radius:4px;
+      border:2px solid #2a0000;
+    }
+    .badge{font-size:10px;color:#f7d9d9;opacity:0.9}
+
+    /* Main content & layout */
+    .main-row{display:flex; gap:14px}
+    .content{flex:1}
+    h1{font-family:'Press Start 2P', monospace;color:#ff7676;font-size:18px;margin-bottom:8px;text-shadow:0 0 6px rgba(255,0,0,0.5)}
+
+    .box{
+      background: linear-gradient(180deg, rgba(20,0,0,0.25), rgba(10,0,0,0.05));
+      border:1px dashed rgba(140,0,0,0.25);
+      padding:12px;
+      margin-bottom:12px;
+      border-radius:6px;
+    }
+
+    /* Navigation: old-school buttons */
+    nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+    .nav-link{
+      display:inline-block;padding:8px 10px;border:2px solid #3b0000;background:#120000;color:#ffbdbd;text-decoration:none;font-weight:700;
+      box-shadow: 0 3px 0 #000; border-radius:4px; font-size:12px;
+    }
+    .nav-link:hover{transform:translateY(-2px)}
+
+    /* Scrolling marquee and flashing text */
+    .marquee{margin:10px 0}
+    .blink{animation: blink 1s steps(2,end) infinite}
+    @keyframes blink{50%{opacity:0}}
+
+    /* Footer retro */
+    footer{margin-top:14px;padding-top:10px;border-top:1px dotted rgba(200,0,0,0.12);font-size:12px;color:#e8cfcf}
+
+    /* 90s style visitor counter / guestbook box */
+    .counter{font-family:'Courier New',monospace;background:rgba(0,0,0,0.3);padding:6px;border-radius:4px;border:1px solid rgba(255,255,255,0.03);display:inline-block}
+
+    /* Fake blood splatter watermark using pseudo element */
+    .page::before{
+      content:'';position:fixed;right:-80px;top:120px;width:420px;height:420px;pointer-events:none;
+      background-image:radial-gradient(circle at 20% 30%, rgba(140,0,0,0.18), rgba(0,0,0,0) 40%),
+                        radial-gradient(circle at 70% 60%, rgba(200,0,0,0.12), rgba(0,0,0,0) 40%);
+      transform:rotate(-12deg);opacity:0.7;mix-blend-mode:screen;filter:blur(2px)
+    }
+
+    /* Small screens */
+    @media (max-width:740px){
+      .main-row{flex-direction:column}
+      .left{width:100%;margin-right:0}
+      header{flex-direction:column;gap:6px}
+      .logo{font-size:20px}
+    }
+
+    /* Retro table look for links list */
+    .links-list{list-style:none;padding-left:0}
+    .links-list li{padding:6px 0;border-bottom:1px dotted rgba(255,0,0,0.06)}
+    .links-list a{color:#ffbdbd;text-decoration:underline;font-weight:700}
+
+    /* Optional: gaudy flashing border (90s flashing effect) */
+    .garish{animation: garish 6s linear infinite}
+    @keyframes garish{0%{box-shadow:0 0 0 rgba(255,0,0,0)}25%{box-shadow:0 0 15px rgba(255,0,0,0.3)}50%{box-shadow:0 0 0 rgba(255,255,255,0.01)}75%{box-shadow:0 0 15px rgba(255,0,0,0.4)}100%{box-shadow:0 0 0 rgba(255,0,0,0)}}
+
+  </style>
 </head>
-<body bgcolor="black" text="red">
-<center>
-<img src="assets/bloodbar_e0.gif" alt="dripping blood banner">
-<img src="assets/logo.png">
-<marquee>🩸 WELCOME TO MY WEBSITE! 🩸</marquee>
-<img src="assets/flames.gif" alt="flames" width="100%">
-</center>
-<table border="0" width="100%">
-<tr>
-<td width="200" bgcolor="#220000" valign="top">
-<h3>Navigation</h3>
-<font color="#ff5555">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="music.html">Music</a></li>
-<li><a href="links.html">Links</a></li>
-<li><a href="guestbook.html">Guestbook</a></li>
-</ul>
-</font>
-<img src="assets/under_construction.gif" alt="Under Construction">
-</td>
-<td valign="top" style="padding-left:20px;">
-<h2>Welcome</h2>
-<font color="#ff9999">This is the chaotic homepage of Stavborg. Metal music, personal projects, and blood-soaked 90s web aesthetics await you.</font>
-</td>
-</tr>
-</table>
-<center><blink>Under Construction!</blink></center>
+<body>
+  <div class="page garish">
+    <header>
+      <div class="logo">STAVB.ORG</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div style="font-size:12px;color:#f9dede">A brutally nostalgic corner of the web — 1996 vibes</div>
+          <div class="counter">Visitors: 001234</div>
+        </div>
+        <div class="marquee">
+          <marquee behavior="scroll" direction="left">WELCOME — THIS SITE CONTAINS BLOODY ART, METAL LINKS, GIFS &amp; BAD WEB DESIGN — ENTER IF YOU DARE</marquee>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-row">
+      <aside class="left box">
+        <!-- You can replace the image URL with your own GIF or drop in /assets/avatar.gif -->
+        <img class="avatar" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" alt="bloody flame gif" />
+        <div class="badge">STAVB — Official Shrine</div>
+        <div style="margin-top:8px;font-size:12px;color:#f0dcdc">Fan art, rants, and terrible midi playlists</div>
+      </aside>
+
+      <section class="content">
+        <nav>
+          <a class="nav-link" href="#home">HOME</a>
+          <a class="nav-link" href="#band">BAND</a>
+          <a class="nav-link" href="#media">MEDIA</a>
+          <a class="nav-link" href="#guestbook">GUESTBOOK</a>
+          <a class="nav-link" href="#links">LINKS</a>
+        </nav>
+
+        <article class="box" id="home">
+          <h1>WELCOME</h1>
+          <p style="margin-top:8px;color:#ffdede">This is <strong>Stavb.org</strong>. Old-school HTML, flashing GIFs, MIDI playlists, and dramatic blood overlays. Built to offend modern minimalist sensibilities.</p>
+        </article>
+
+        <article class="box" id="band">
+          <h1>THE BAND</h1>
+          <p style="margin-top:8px">Stavb is an imagined heavy act that worships distortion pedals and late-night static. Below: discography (fake), tour (never), and press clippings (handmade).</p>
+          <ul class="links-list" style="margin-top:8px">
+            <li><a href="#">Demo Tape — 1993</a></li>
+            <li><a href="#">Live at the Abandoned Mall — 1995</a></li>
+            <li><a href="#">Compilation: Screams from the Attic — 1997</a></li>
+          </ul>
+        </article>
+
+        <article class="box" id="media">
+          <h1>MEDIA</h1>
+          <p style="margin-top:8px">Downloads — images, gifs and a terrible MP3 sample (midi-styled). Modern browsers block autoplay — use the controls below.</p>
+          <p style="margin-top:6px"><em>Sample player:</em></p>
+          <audio controls preload="none">
+            <source src="https://archive.org/download/testmp3testfile/mpthreetest.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </article>
+
+        <article class="box" id="guestbook">
+          <h1>GUESTBOOK</h1>
+          <p style="margin-top:8px">Leave a message (this is a static demo — to make it live, hook the form up to a server or use a static commenting service).</p>
+          <form onsubmit="alert('This is a static demo. To enable a real guestbook, use a server endpoint or third-party widget.');return false;">
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <input placeholder="Name" style="flex:0 0 160px;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede">
+              <input placeholder="Email (optional)" style="flex:1;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede">
+            </div>
+            <div style="margin-top:8px">
+              <textarea placeholder="Message" rows="4" style="width:100%;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede"></textarea>
+            </div>
+            <div style="margin-top:8px"><button type="submit" style="padding:8px 14px;border-radius:6px;border:2px solid #3b0000;background:#1a0000;color:#ffdede;font-weight:700">SCRIBE THIS</button></div>
+          </form>
+        </article>
+
+        <article class="box" id="links">
+          <h1>LINKS</h1>
+          <ul class="links-list">
+            <li><a href="https://example.com">Other Oblivion Site</a></li>
+            <li><a href="https://example.com">Free GIFs &amp; Clipart</a></li>
+            <li><a href="https://example.com">Retro MIDI Archive</a></li>
+          </ul>
+        </article>
+
+      </section>
+    </div>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <strong>Stavb.org</strong> — Beware the drip. <span class="blink">THIS SITE IS A TRIBUTE TO THE 90s</span></div>
+        <div style="font-size:12px">Page built: <strong id="builddate"></strong></div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Small script for dynamic date & retro console message.
+    document.getElementById('builddate').textContent = new Date().toLocaleDateString();
+    console.log('%c Welcome to Stavb.org — you found the bloodsite. ', 'background:#220000;color:#ffbdbd;padding:6px 8px;border-radius:6px');
+
+    // Add tiny visual 'blood drops' for extra 90s drama
+    (function spawnDrops(){
+      const page = document.querySelector('.page');
+      for(let i=0;i<6;i++){
+        const d = document.createElement('div');
+        d.style.position='absolute';
+        d.style.left=(10 + Math.random()*80)+'%';
+        d.style.top=(10 + Math.random()*80)+'%';
+        d.style.width='6px'; d.style.height='8px';
+        d.style.background='linear-gradient(#a30000,#3a0000)';
+        d.style.borderRadius='50%'; d.style.opacity=0.8; d.style.pointerEvents='none';
+        d.style.transform='translateY(0)';
+        d.style.transition='transform 3s linear, opacity 3s linear';
+        page.appendChild(d);
+        setTimeout(()=>{d.style.transform='translateY(60px)'; d.style.opacity='0'}, 80 + Math.random()*1200);
+        setTimeout(()=>{d.remove()}, 4200);
+      }
+      setTimeout(spawnDrops, 2500 + Math.random()*2500);
+    })();
+  </script>
 </body>
 </html>
