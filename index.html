@@ -90,15 +90,17 @@
     /* Left sidebar with logo and avatar */
     .left{
       width:240px;
-      min-height:500px;
+      height:100vh; /* Full viewport height in desktop */
+      min-height:500px; /* Fallback minimum */
       background:rgba(0,0,0,0.35);
       border:2px solid rgba(255,0,0,0.15);
-      padding:0px;
-      margin:0px
+      padding:12px;
       border-radius:6px;
       text-align:center;
       margin-right:12px;
-      align-self:flex-start;
+      align-self:stretch; /* Stretch to full height of parent */
+      position:sticky;
+      top:0; /* Stick to top when scrolling */
     }
     .avatar{
       width:180px; height:120px; display:block; margin:0 auto 8px; object-fit:cover; border-radius:4px;
@@ -149,10 +151,26 @@
     /* Small screens */
     @media (max-width:740px){
       .main-row{flex-direction:column}
-      .left{width:100%;margin-right:0}
+      .left{
+        width:100%;
+        margin-right:0;
+        height:auto; /* Auto height for mobile */
+        min-height:auto; /* Remove minimum height */
+        position:relative; /* Remove sticky positioning */
+        align-self:auto; /* Reset alignment */
+        padding:12px; /* Restore padding */
+      }
       header{flex-direction:column;gap:6px}
       .logo{font-size:20px}
+      
+      /* Hide desktop logo and show mobile logo */
+      .logo .desktop-logo { display: none !important; }
+      .logo .mobile-logo { display: block !important; }
     }
+
+    /* Desktop logo visibility (default) */
+    .logo .desktop-logo { display: block; }
+    .logo .mobile-logo { display: none; }
 
     /* Retro table look for links list */
     .links-list{list-style:none;padding-left:0}
@@ -182,7 +200,8 @@
       <aside class="left box">
         <!-- Logo at the top of sidebar -->
         <div class="logo" style="margin-bottom:16px;">
-          <img src="assets/logo.png" alt="STAVB.ORG">
+          <img class="desktop-logo" src="assets/logo.png" alt="STAVB.ORG">
+          <img class="mobile-logo" src="assets/logo2.png" alt="STAVB.ORG">
         </div>
 
       </aside>
