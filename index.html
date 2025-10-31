@@ -57,11 +57,21 @@
     /* ensure logo image fits the header */
     .logo img{
       display:block;
-      max-height:48px;
+      max-height:64px; /* increased from 48px */
       width:auto;
       max-width:100%;
       object-fit:contain;
     }
+
+    /* bloodbar: always fit its parent container */
+    .bloodbar{
+      display:block;
+      width:100%;
+      height:auto;
+      max-width:100%;
+      margin:12px 0;
+    }
+
     .logo::after{
       content: '';
       position:absolute;
@@ -192,7 +202,7 @@
           <h1>WELCOME</h1>
           <p style="margin-top:8px;color:#ffdede">This is <strong>Stavb.org</strong>. Old-school HTML, flashing GIFs, MIDI playlists, and dramatic blood overlays. Built to offend modern minimalist sensibilities.</p>
         </article>
-        <img src="assets/bloodbar_e0.gif" alt="blood bar" style="width:100%;max-width:400px;height:auto;margin:12px 0;">
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
 
         <article class="box" id="band">
           <h1>THE BAND</h1>
@@ -203,7 +213,7 @@
             <li><a href="#">Compilation: Screams from the Attic — 1997</a></li>
           </ul>
         </article>
-        <img src="assets/bloodbar_e0.gif" alt="blood bar" style="width:100%;max-width:400px;height:auto;margin:12px 0;">
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
 
         <article class="box" id="media">
           <h1>MEDIA</h1>
@@ -214,7 +224,7 @@
             Your browser does not support the audio element.
           </audio>
         </article>
-        <img src="assets/bloodbar_e0.gif" alt="blood bar" style="width:100%;max-width:400px;height:auto;margin:12px 0;">
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
 
         <article class="box" id="guestbook">
           <h1>GUESTBOOK</h1>
@@ -230,7 +240,7 @@
             <div style="margin-top:8px"><button type="submit" style="padding:8px 14px;border-radius:6px;border:2px solid #3b0000;background:#1a0000;color:#ffdede;font-weight:700">SCRIBE THIS</button></div>
           </form>
         </article>
-        <img src="assets/bloodbar_e0.gif" alt="blood bar" style="width:100%;max-width:400px;height:auto;margin:12px 0;">
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
 
         <article class="box" id="links">
           <h1>LINKS</h1>
@@ -240,4 +250,15 @@
             <li><a href="https://example.com">Retro MIDI Archive</a></li>
           </ul>
         </article>
-        <img src="assets/bloodbar_e0.gif" alt="blood bar" style="width:100%;max-width:400px;height:auto;margin:12px 0;">
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
+      </section>
+    </div>
+
+    <footer>
+      <div style="text-align:center;color:#f0dcdc;font-size:11px;margin-top:12px">
+        &copy; 2023 Stavb.org - All rights reserved. | <a href="#guestbook" style="color:#ffbdbd;text-decoration:underline">Sign the guestbook</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
