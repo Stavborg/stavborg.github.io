@@ -57,7 +57,7 @@
     /* ensure logo image fits the header */
     .logo img{
       display:block;
-      width:180px; /* match avatar width */
+      width:240px; /* match avatar width */
       height:auto;
       max-width:100%;
       object-fit:contain;
@@ -164,6 +164,17 @@
     .garish{animation: garish 6s linear infinite}
     @keyframes garish{0%{box-shadow:0 0 0 rgba(255,0,0,0)}25%{box-shadow:0 0 15px rgba(255,0,0,0.3)}50%{box-shadow:0 0 0 rgba(255,255,255,0.01)}75%{box-shadow:0 0 15px rgba(255,0,0,0.4)}100%{box-shadow:0 0 0 rgba(255,0,0,0)}}
 
+    /* Guestbook entries styling */
+    .guestbook-entry{
+      background:rgba(30,0,0,0.15);border:1px dotted rgba(200,0,0,0.2);padding:10px;margin:8px 0;border-radius:4px;
+      font-size:12px;color:#f0dcdc
+    }
+    .guestbook-header{display:flex;justify-content:space-between;margin-bottom:6px;font-weight:700}
+    .guestbook-name{color:#ffbdbd}
+    .guestbook-date{color:#e8cfcf;font-size:10px}
+    .guestbook-message{line-height:1.4;color:#ffdede}
+    .loading{color:#ffbdbd;font-style:italic;text-align:center;padding:12px}
+
   </style>
 </head>
 <body>
@@ -172,11 +183,11 @@
       <div class="logo"><img src="assets/logo.png" alt="STAVB.ORG"></div>
       <div style="flex:1">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div style="font-size:12px;color:#f9dede">A brutally nostalgic corner of the web — 1996 vibes</div>
-          <div class="counter">Visitors: 001234</div>
+          <div style="font-size:12px;color:#f9dede">One man, many riffs, zero social life.</div>
+          <div class="counter">Visitors since 10/31/2025: <span id="visitor-count">000000</span></div>
         </div>
         <div class="marquee">
-          <marquee behavior="scroll" direction="left">WELCOME — THIS SITE CONTAINS BLOODY ART, METAL LINKS, GIFS &amp; BAD WEB DESIGN — ENTER IF YOU DARE</marquee>
+          <marquee behavior="scroll" direction="left">🩸 WELCOME TO MY HOMEPAGE 🩸</marquee>
         </div>
       </div>
     </header>
@@ -192,7 +203,7 @@
       <section class="content">
         <nav>
           <a class="nav-link" href="#home">HOME</a>
-          <a class="nav-link" href="#band">BAND</a>
+          <a class="nav-link" href="#about">ABOUT</a>
           <a class="nav-link" href="#media">MEDIA</a>
           <a class="nav-link" href="#guestbook">GUESTBOOK</a>
           <a class="nav-link" href="#links">LINKS</a>
@@ -200,44 +211,50 @@
 
         <article class="box" id="home">
           <h1>WELCOME</h1>
-          <p style="margin-top:8px;color:#ffdede">This is <strong>Stavb.org</strong>. Old-school HTML, flashing GIFs, MIDI playlists, and dramatic blood overlays. Built to offend modern minimalist sensibilities.</p>
+          <p style="margin-top:8px;color:#ffdede">This is <strong>Stavb.org</strong>. My little portion of the web.</p>
         </article>
         <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
 
-        <article class="box" id="band">
-          <h1>THE BAND</h1>
-          <p style="margin-top:8px">Stavb is an imagined heavy act that worships distortion pedals and late-night static. Below: discography (fake), tour (never), and press clippings (handmade).</p>
-          <ul class="links-list" style="margin-top:8px">
-            <li><a href="#">Demo Tape — 1993</a></li>
-            <li><a href="#">Live at the Abandoned Mall — 1995</a></li>
-            <li><a href="#">Compilation: Screams from the Attic — 1997</a></li>
-          </ul>
+        <article class="box" id="about">
+          <h1>ABOUT</h1>
+          <p style="margin-top:8px">I am Jonas, a <span id="current-age">calculating...</span> year old Swede who lives in Argentina with my wife and son. I love to spend time with my family, play/record music, video games, and lately getting into coding a little bit.</p>
         </article>
         <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
 
         <article class="box" id="media">
           <h1>MEDIA</h1>
-          <p style="margin-top:8px">Downloads — images, gifs and a terrible MP3 sample (midi-styled). Modern browsers block autoplay — use the controls below.</p>
-          <p style="margin-top:6px"><em>Sample player:</em></p>
-          <audio controls preload="none">
-            <source src="https://archive.org/download/testmp3testfile/mpthreetest.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
+          <p style="margin-top:8px;margin-bottom:12px">Here I post some of my music:</p>
+          <iframe width="100%" height="150" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1363910395&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/stavborg" title="Jonas Stavborg" target="_blank" style="color: #cccccc; text-decoration: none;">Jonas Stavborg</a> · <a href="https://soundcloud.com/stavborg/call-for-me" title="Call for me" target="_blank" style="color: #cccccc; text-decoration: none;">Call for me</a></div>
         </article>
         <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
 
         <article class="box" id="guestbook">
           <h1>GUESTBOOK</h1>
-          <p style="margin-top:8px">Leave a message (this is a static demo — to make it live, hook the form up to a server or use a static commenting service).</p>
-          <form onsubmit="alert('This is a static demo. To enable a real guestbook, use a server endpoint or third-party widget.');return false;">
+          <p style="margin-top:8px">Leave a message for the world to see! 🩸</p>
+          
+          <!-- Guestbook Entries Display -->
+          <div id="guestbook-entries" style="margin:12px 0;"></div>
+          
+          <!-- Admin Controls -->
+          <div style="text-align:right;margin:8px 0;">
+            <button id="clear-guestbook" onclick="clearGuestbook()" style="padding:4px 8px;font-size:10px;border-radius:4px;border:1px solid #550000;background:#220000;color:#ffaaaa;cursor:pointer">🗑️ Clear All</button>
+          </div>
+          
+          <!-- Guestbook Form -->
+          <form id="guestbook-form" action="https://formspree.io/f/xblpzodr" method="POST">
             <div style="display:flex;gap:8px;margin-top:8px">
-              <input placeholder="Name" style="flex:0 0 160px;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede">
-              <input placeholder="Email (optional)" style="flex:1;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede">
+              <input name="name" placeholder="Name" required style="flex:0 0 160px;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede">
+              <input name="email" type="email" placeholder="Email (optional)" style="flex:1;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede">
             </div>
             <div style="margin-top:8px">
-              <textarea placeholder="Message" rows="4" style="width:100%;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede"></textarea>
+              <textarea name="message" placeholder="Message" rows="4" required style="width:100%;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede"></textarea>
             </div>
-            <div style="margin-top:8px"><button type="submit" style="padding:8px 14px;border-radius:6px;border:2px solid #3b0000;background:#1a0000;color:#ffdede;font-weight:700">SCRIBE THIS</button></div>
+            <div style="margin-top:8px">
+              <button type="submit" id="submit-btn" style="padding:8px 14px;border-radius:6px;border:2px solid #3b0000;background:#1a0000;color:#ffdede;font-weight:700">SCRIBE THIS</button>
+              <span id="form-status" style="margin-left:12px;font-size:12px;"></span>
+            </div>
+            <input type="hidden" name="_subject" value="New Guestbook Entry - Stavb.org">
+            <input type="hidden" name="_next" value="https://stavborg.github.io/#guestbook">
           </form>
         </article>
         <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
@@ -245,9 +262,8 @@
         <article class="box" id="links">
           <h1>LINKS</h1>
           <ul class="links-list">
-            <li><a href="https://example.com">Other Oblivion Site</a></li>
-            <li><a href="https://example.com">Free GIFs &amp; Clipart</a></li>
-            <li><a href="https://example.com">Retro MIDI Archive</a></li>
+            <li><a href="https://alteredrage.bandcamp.com/">Altered Rage</a></li>
+            <li><a href="https://www.axisofdespair.com/">Axis of Despair</a></li>
           </ul>
         </article>
         <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
@@ -260,5 +276,178 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    // Auto-update age calculation
+    function calculateAge() {
+      // UPDATE YOUR BIRTH DATE HERE (YYYY, MM-1, DD) - Note: months are 0-indexed in JavaScript
+      const birthDate = new Date(1983, 6, 8); // Replace with your birth date: Year, Month-1, Day
+      const today = new Date();
+      
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+      
+      // Adjust age if birthday hasn't occurred this year
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      
+      return age;
+    }
+
+    // Visitor counter using CountAPI
+    function updateVisitorCount() {
+      const visitorElement = document.getElementById('visitor-count');
+      const counterId = 'stavborg-github-io'; // Unique identifier for your site
+      
+      // Fetch and increment visitor count
+      fetch(`https://api.countapi.xyz/hit/stavborg.github.io/${counterId}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.value) {
+            // Format number with leading zeros (6 digits, 90s style)
+            const formattedCount = data.value.toString().padStart(6, '0');
+            visitorElement.textContent = formattedCount;
+          }
+        })
+        .catch(error => {
+          console.log('Visitor counter error:', error);
+          // Fallback to a retro animation if API fails
+          visitorElement.textContent = '??????';
+        });
+    }
+
+    // Guestbook functionality
+    function loadGuestbookEntries() {
+      const entriesDiv = document.getElementById('guestbook-entries');
+      entriesDiv.innerHTML = '<div class="loading">Loading guestbook entries...</div>';
+      
+      // Try to load from localStorage for demo purposes
+      const savedEntries = localStorage.getItem('guestbook-entries');
+      
+      if (savedEntries) {
+        const entries = JSON.parse(savedEntries);
+        displayGuestbookEntries(entries);
+      } else {
+        // Initialize with a welcome entry
+        const welcomeEntries = [
+          {
+            name: "Jonas",
+            message: "Welcome to my guestbook! Leave me a message! 🩸",
+            date: new Date().toLocaleDateString()
+          }
+        ];
+        displayGuestbookEntries(welcomeEntries);
+        localStorage.setItem('guestbook-entries', JSON.stringify(welcomeEntries));
+      }
+    }
+
+    function displayGuestbookEntries(entries) {
+      const entriesDiv = document.getElementById('guestbook-entries');
+      
+      if (entries.length === 0) {
+        entriesDiv.innerHTML = '<div class="loading">No entries yet. Be the first to sign!</div>';
+        return;
+      }
+      
+      const entriesHtml = entries.reverse().map(entry => `
+        <div class="guestbook-entry">
+          <div class="guestbook-header">
+            <span class="guestbook-name">${escapeHtml(entry.name)}</span>
+            <span class="guestbook-date">${entry.date}</span>
+          </div>
+          <div class="guestbook-message">${escapeHtml(entry.message)}</div>
+        </div>
+      `).join('');
+      
+      entriesDiv.innerHTML = entriesHtml;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function clearGuestbook() {
+      if (confirm('🩸 Are you sure you want to clear all guestbook entries? This cannot be undone!')) {
+        localStorage.removeItem('guestbook-entries');
+        const entriesDiv = document.getElementById('guestbook-entries');
+        entriesDiv.innerHTML = '<div class="loading">Guestbook cleared! 🗑️</div>';
+        
+        // Reinitialize with welcome message
+        setTimeout(() => {
+          loadGuestbookEntries();
+        }, 1500);
+      }
+    }
+
+    function handleGuestbookSubmit() {
+      const form = document.getElementById('guestbook-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const status = document.getElementById('form-status');
+      
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const name = formData.get('name');
+        const message = formData.get('message');
+        
+        if (!name || !message) {
+          status.textContent = '❌ Please fill in name and message';
+          status.style.color = '#ff7676';
+          return;
+        }
+        
+        // Add to localStorage for immediate display
+        const savedEntries = JSON.parse(localStorage.getItem('guestbook-entries') || '[]');
+        const newEntry = {
+          name: name,
+          message: message,
+          date: new Date().toLocaleDateString()
+        };
+        savedEntries.push(newEntry);
+        localStorage.setItem('guestbook-entries', JSON.stringify(savedEntries));
+        displayGuestbookEntries(savedEntries);
+        
+        // Show success message
+        submitBtn.textContent = 'SENT! 🩸';
+        status.textContent = '✅ Message added to guestbook!';
+        status.style.color = '#90ff90';
+        
+        // Reset form
+        form.reset();
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          submitBtn.textContent = 'SCRIBE THIS';
+          status.textContent = '';
+        }, 3000);
+        
+        // Also submit to Formspree for email notifications
+        fetch('https://formspree.io/f/xblpzodr', {
+          method: 'POST',
+          body: formData
+        }).catch(error => console.log('Email notification failed:', error));
+      });
+    }
+
+    // Update age, visitor count, and initialize guestbook when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Update age
+      const ageElement = document.getElementById('current-age');
+      if (ageElement) {
+        ageElement.textContent = calculateAge();
+      }
+      
+      // Update visitor count
+      updateVisitorCount();
+      
+      // Initialize guestbook
+      loadGuestbookEntries();
+      handleGuestbookSubmit();
+    });
+  </script>
 </body>
 </html>
