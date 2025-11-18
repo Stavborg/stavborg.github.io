@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stavb.org - Retro Homepage</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Courier+Prime:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: #00ff00;
+            font-family: 'Courier Prime', monospace;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 69, 0, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 140, 0, 0.2) 0%, transparent 50%),
+                linear-gradient(45deg, rgba(139, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 100%);
+        }
+        
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header with flame title */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .title {
+            font-family: 'Orbitron', monospace;
+            font-size: 4em;
+            font-weight: 900;
+            color: #c0c0c0;
+            text-shadow: 
+                2px 2px 0px #808080,
+                4px 4px 0px #404040,
+                0px 0px 20px #ff4500,
+                0px 0px 40px #ff6500,
+                0px 0px 60px #ff8500;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #e6e6e6, #999999, #cccccc);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        
+        .title::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><linearGradient id="flame" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:%23ff0000;stop-opacity:1" /><stop offset="50%" style="stop-color:%23ff6500;stop-opacity:1" /><stop offset="100%" style="stop-color:%23ffff00;stop-opacity:0.8" /></linearGradient></defs><polygon points="10,20 15,5 20,20 25,8 30,20 35,3 40,20 45,7 50,20 55,4 60,20 65,6 70,20 75,5 80,20 85,8 90,20" fill="url(%23flame)"/></svg>') repeat-x;
+            background-size: 200px 60px;
+            opacity: 0.8;
+            animation: flicker 2s infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes flicker {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(45deg, #006400, #00ff00);
+            color: #000;
+            padding: 15px;
+            border: 3px solid #ff4500;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Main layout */
+        .main-content {
+            display: flex;
+            gap: 20px;
+            border: 3px solid #dc143c;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        /* Navigation sidebar */
+        .navigation {
+            width: 250px;
+            background: #000;
+            border-right: 2px solid #dc143c;
+            padding: 20px;
+        }
+        
+        .nav-title {
+            color: #00ffff;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #dc143c;
+            padding-bottom: 10px;
+        }
+        
+        .nav-links {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+        
+        .nav-links a {
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border: 1px solid #dc143c;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background: #dc143c;
+            color: #fff;
+        }
+        
+        .skull-image {
+            text-align: center;
+            margin-top: 20px;
+            border: 2px solid #dc143c;
+            padding: 10px;
+        }
+        
+        .skull-placeholder {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #8b0000, #ff4500);
+            border: 2px solid #ff6500;
+            display: inline-block;
+            position: relative;
+            border-radius: 10px;
+        }
+        
+        .skull-placeholder::before {
+            content: '💀';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4em;
+            filter: drop-shadow(0 0 10px #ff4500);
+        }
+        
+        /* Content area */
+        .content {
+            flex: 1;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .greeting {
+            color: #00ff00;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .intro-text {
+            color: #00ffff;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .fire-image {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .fire-placeholder {
+            width: 300px;
+            height: 200px;
+            background: radial-gradient(circle at center bottom, #ff0000 0%, #ff6500 40%, #ffff00 70%, transparent 100%);
+            display: inline-block;
+            position: relative;
+            border-radius: 50px 50px 10px 10px;
+            animation: fire-dance 2s infinite ease-in-out;
+        }
+        
+        @keyframes fire-dance {
+            0%, 100% { transform: scaleY(1) scaleX(1); }
+            50% { transform: scaleY(1.1) scaleX(0.95); }
+        }
+        
+        .fire-placeholder::before {
+            content: '🔥';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3em;
+            animation: flicker 1.5s infinite alternate;
+        }
+        
+        .whats-new {
+            margin-top: 30px;
+        }
+        
+        .whats-new h2 {
+            color: #00ff00;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #dc143c;
+            padding-bottom: 5px;
+        }
+        
+        .update-item {
+            color: #00ffff;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        
+        .update-item::before {
+            content: '🔸';
+            margin-right: 10px;
+        }
+        
+        .under-construction {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 5px 10px;
+            background: #ffff00;
+            color: #000;
+            font-weight: bold;
+            font-size: 0.8em;
+            border: 2px solid #000;
+            transform: rotate(-5deg);
+        }
+        
+        .guestbook-button {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .guestbook-button a {
+            display: inline-block;
+            background: linear-gradient(45deg, #0000ff, #4169e1);
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            border: 3px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #0000ff;
+            transition: all 0.3s;
+        }
+        
+        .guestbook-button a:hover {
+            background: linear-gradient(45deg, #4169e1, #6495ed);
+            box-shadow: 0 0 30px #4169e1;
+        }
+        
+        .visitor-counter {
+            text-align: center;
+            margin-top: 20px;
+            color: #00ff00;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+        }
+        
+        .counter-display {
+            background: #000;
+            border: 2px solid #00ff00;
+            padding: 10px 20px;
+            display: inline-block;
+            font-size: 1.1em;
+            letter-spacing: 2px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .navigation {
+                width: 100%;
+            }
+            
+            .title {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Stavb.org</h1>
+            <div class="welcome-banner">
+                WELCOME TO MY HOMEPAGE!
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <nav class="navigation">
+                <div class="nav-title">Navigation</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#photos">Photos</a></li>
+                    <li><a href="#links">Links</a></li>
+                </ul>
+                <div class="skull-image">
+                    <div class="skull-placeholder"></div>
+                </div>
+            </nav>
+            
+            <main class="content">
+                <h2 class="greeting">Greetings, fellow Netizen!</h2>
+                <p class="intro-text">
+                    I am a web developer with a passion for coding and design. 
+                    This site showcases my projects, interests, and thoughts on 
+                    web development.
+                </p>
+                
+                <div class="fire-image">
+                    <div class="fire-placeholder"></div>
+                </div>
+                
+                <div class="whats-new">
+                    <h2>What's New?</h2>
+                    <div class="update-item">
+                        Updated my portfolio with recent projects!
+                        <span class="under-construction">UNDER CONSTRUCTION</span>
+                    </div>
+                </div>
+                
+                <div class="guestbook-button">
+                    <a href="#guestbook">Sign My Guestbook!</a>
+                </div>
+                
+                <div class="visitor-counter">
+                    You are visitor number: <span class="counter-display" id="visitor-count">000123</span>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Simple visitor counter animation
+        function animateCounter() {
+            const counter = document.getElementById('visitor-count');
+            let count = 123;
+            
+            setInterval(() => {
+                count += Math.floor(Math.random() * 3) + 1;
+                counter.textContent = count.toString().padStart(6, '0');
+            }, 30000); // Update every 30 seconds
+        }
+        
+        // Initialize counter animation
+        animateCounter();
+        
+        // Add some retro effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Blinking cursor effect for title
+            setInterval(() => {
+                const title = document.querySelector('.title');
+                if (title.textContent.endsWith('|')) {
+                    title.textContent = title.textContent.slice(0, -1);
+                } else {
+                    title.textContent += '|';
+                }
+            }, 800);
+            
+            setTimeout(() => {
+                document.querySelector('.title').textContent = 'Stavb.org';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

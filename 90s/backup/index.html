@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Stavb.org</title>
+  <!-- Retro 90s vibes: use web font but fallback to Comic Sans-ish feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+
+    /* Background: dark, subtle moving blood smear using repeating-linear-gradient */
+    body{
+      background: #0b0202;
+      color: #f2dede;
+      font-family: 'Share Tech Mono', 'Courier New', monospace;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.3;
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(120,0,0,0.12) 0%, rgba(0,0,0,0) 12%),
+        radial-gradient(circle at 90% 80%, rgba(90,0,0,0.10) 0%, rgba(0,0,0,0) 14%),
+        repeating-linear-gradient(45deg, rgba(30,0,0,0.02) 0 6px, rgba(0,0,0,0) 6px 12px);
+      background-blend-mode: screen, screen, normal;
+      min-height:100%;
+      padding:24px;
+    }
+
+    /* Container with retro border and glow */
+    .page{
+      max-width:980px;
+      margin:0 auto;
+      background: linear-gradient(180deg, rgba(10,0,0,0.45), rgba(0,0,0,0.65));
+      border:4px solid rgba(120,0,0,0.9);
+      padding:18px;
+      border-radius:8px;
+      box-shadow: 0 0 28px rgba(220,0,0,0.12), inset 0 0 24px rgba(200,0,0,0.06);
+    }
+
+    header{
+      margin-bottom:12px;
+    }
+
+    /* Logo: big pixel font, blood drip effect via pseudo elements */
+    .logo{
+      font-family: 'Press Start 2P', monospace;
+      color:#ff0000;
+      font-size:28px;
+      letter-spacing:1px;
+      position:relative;
+      text-shadow: 0 0 8px rgba(255,0,0,0.8), 2px 2px 0 #000;
+    }
+    /* Logo in sidebar */
+    .logo img{
+      display:block;
+      width:280px;
+      height:auto;
+      max-width:100%;
+      object-fit:contain;
+      margin:0 auto; /* Center horizontally */
+    }
+
+    /* Responsive video embeds (maintain aspect ratio) */
+    .video-wrapper{
+      position:relative;
+      width:100%;
+      padding-top:56.25%; /* 16:9 aspect ratio */
+      overflow:hidden;
+      border-radius:6px;
+      margin-bottom:12px;
+    }
+    .video-wrapper iframe{
+      position:absolute;
+      top:0; left:0; width:100%; height:100%; border:0;
+    }
+    /* bloodbar: always fit its parent container */
+    .bloodbar{
+      display:block;
+      width:100%;
+      height:auto;
+      max-width:100%;
+      margin:12px 0;
+    }
+
+    .logo::after{
+      content: '';
+      position:absolute;
+      left:12px; top:38px;
+      width:8px; height:18px;
+      background: linear-gradient(#8a0000,#220000);
+      border-radius:4px 4px 10px 10px;
+      filter: blur(0.6px);
+      transform: rotate(10deg);
+      animation: drip 3s linear infinite;
+      opacity:0.9;
+    }
+    @keyframes drip{
+      0%{transform:translateY(0) rotate(6deg); opacity:0.95}
+      70%{transform:translateY(28px) rotate(6deg); opacity:0.7}
+      100%{transform:translateY(60px) rotate(6deg); opacity:0}
+    }
+
+    /* Left sidebar with logo and avatar */
+    .left{
+      width:240px;
+      height:100vh; /* Full viewport height in desktop */
+      min-height:500px; /* Fallback minimum */
+      background:rgba(0,0,0,0.35);
+      border:2px solid rgba(255,0,0,0.15);
+      padding:12px;
+      border-radius:6px;
+      text-align:center;
+      margin-right:12px;
+      align-self:stretch; /* Stretch to full height of parent */
+      position:sticky;
+      top:0; /* Stick to top when scrolling */
+    }
+    .avatar{
+      width:180px; height:120px; display:block; margin:0 auto 8px; object-fit:cover; border-radius:4px;
+      border:2px solid #2a0000;
+    }
+    .badge{font-size:10px;color:#f7d9d9;opacity:0.9}
+
+    /* Main content & layout */
+    .main-row{display:flex; gap:14px}
+    .content{flex:1}
+    h1{font-family:'Press Start 2P', monospace;color:#ff7676;font-size:18px;margin-bottom:8px;text-shadow:0 0 6px rgba(255,0,0,0.5)}
+
+    .box{
+      background: linear-gradient(180deg, rgba(20,0,0,0.25), rgba(10,0,0,0.05));
+      border:1px dashed rgba(140,0,0,0.25);
+      padding:0px;
+      margin-bottom:12px;
+      border-radius:6px;
+    }
+
+    /* Navigation: old-school buttons */
+    nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+    .nav-link{
+      display:inline-block;padding:8px 10px;border:2px solid #3b0000;background:#120000;color:#ffbdbd;text-decoration:none;font-weight:700;
+      box-shadow: 0 3px 0 #000; border-radius:4px; font-size:12px;
+    }
+    .nav-link:hover{transform:translateY(-2px)}
+
+    /* Scrolling marquee and flashing text */
+    .marquee{margin:10px 0}
+    .blink{animation: blink 1s steps(2,end) infinite}
+    @keyframes blink{50%{opacity:0}}
+
+    /* Footer retro */
+    footer{margin-top:14px;padding-top:10px;border-top:1px dotted rgba(200,0,0,0.12);font-size:12px;color:#e8cfcf}
+
+    /* 90s style visitor counter / guestbook box */
+    .counter{font-family:'Courier New',monospace;background:rgba(0,0,0,0.3);padding:6px;border-radius:4px;border:1px solid rgba(255,255,255,0.03);display:inline-block}
+
+    /* Fake blood splatter watermark using pseudo element */
+    .page::before{
+      content:'';position:fixed;right:-80px;top:120px;width:420px;height:420px;pointer-events:none;
+      background-image:radial-gradient(circle at 20% 30%, rgba(140,0,0,0.18), rgba(0,0,0,0) 40%),
+                        radial-gradient(circle at 70% 60%, rgba(200,0,0,0.12), rgba(0,0,0,0) 40%);
+      transform:rotate(-12deg);opacity:0.7;mix-blend-mode:screen;filter:blur(2px)
+    }
+
+    /* Small screens */
+    @media (max-width:740px){
+      .main-row{flex-direction:column}
+      .left{
+        width:100%;
+        margin-right:0;
+        height:auto; /* Auto height for mobile */
+        min-height:auto; /* Remove minimum height */
+        position:relative; /* Remove sticky positioning */
+        align-self:auto; /* Reset alignment */
+        padding:12px; /* Restore padding */
+      }
+      header{flex-direction:column;gap:6px}
+      .logo{font-size:20px}
+      
+      /* Hide desktop logo and show mobile logo */
+      .logo .desktop-logo { display: none !important; }
+      .logo .mobile-logo { display: block !important; }
+    }
+
+    /* Desktop logo visibility (default) */
+    .logo .desktop-logo { display: block; }
+    .logo .mobile-logo { display: none; }
+
+    /* Retro table look for links list */
+    .links-list{list-style:none;padding-left:0}
+    .links-list li{padding:6px 0;border-bottom:1px dotted rgba(255,0,0,0.06)}
+    .links-list a{color:#ffbdbd;text-decoration:underline;font-weight:700}
+
+    /* Optional: gaudy flashing border (90s flashing effect) */
+    .garish{animation: garish 6s linear infinite}
+    @keyframes garish{0%{box-shadow:0 0 0 rgba(255,0,0,0)}25%{box-shadow:0 0 15px rgba(255,0,0,0.3)}50%{box-shadow:0 0 0 rgba(255,255,255,0.01)}75%{box-shadow:0 0 15px rgba(255,0,0,0.4)}100%{box-shadow:0 0 0 rgba(255,0,0,0)}}
+
+    /* Guestbook entries styling */
+    .guestbook-entry{
+      background:rgba(30,0,0,0.15);border:1px dotted rgba(200,0,0,0.2);padding:10px;margin:8px 0;border-radius:4px;
+      font-size:12px;color:#f0dcdc
+    }
+    .guestbook-header{display:flex;justify-content:space-between;margin-bottom:6px;font-weight:700}
+    .guestbook-name{color:#ffbdbd}
+    .guestbook-date{color:#e8cfcf;font-size:10px}
+    .guestbook-message{line-height:1.4;color:#ffdede}
+    .loading{color:#ffbdbd;font-style:italic;text-align:center;padding:12px}
+
+  </style>
+</head>
+<body>
+  <div class="page garish">
+    <div class="main-row">
+      <aside class="left box">
+        <!-- Logo at the top of sidebar -->
+        <div class="logo" style="margin-bottom:16px;">
+          <img class="desktop-logo" src="assets/logo.png" alt="STAVB.ORG">
+          <img class="mobile-logo" src="assets/logo2.png" alt="STAVB.ORG">
+        </div>
+
+      </aside>
+
+      <section class="content">
+        <header>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="font-size:12px;color:#f9dede">One man, many riffs, zero social life.</div>
+            <div class="counter">Visitors since 10/31/2025: <span id="visitor-count">loading...</span></div>
+          </div>
+          <div class="marquee">
+            <marquee behavior="scroll" direction="left">🩸 WELCOME TO MY HOMEPAGE 🩸</marquee>
+          </div>
+        </header>
+        
+        <nav>
+          <a class="nav-link" href="#home">HOME</a>
+          <a class="nav-link" href="#about">ABOUT</a>
+          <a class="nav-link" href="#media">MEDIA</a>
+          <a class="nav-link" href="#links">LINKS</a>
+          <a class="nav-link" href="#guestbook">GUESTBOOK</a>
+        </nav>
+
+        <article class="box" id="home">
+          <h1>WELCOME</h1>
+          <p style="margin-top:8px;color:#ffdede">This is <strong>Stavb.org</strong>. My little portion of the web.</p>
+        </article>
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
+
+        <article class="box" id="about">
+          <h1>ABOUT</h1>
+          <p style="margin-top:8px"><img src="assets/jonas.png" style="float:left;padding-right:10px">I’m Jonas, a <span id="current-age">calculating...</span>-year-old Swede living in Argentina with my wife and son. I love spending time with family, making and recording music, playing video games, and lately diving into a bit of coding.</p>
+        </article>
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
+
+        <article class="box" id="media">
+          <h1>MEDIA</h1>
+          <p style="margin-top:8px;margin-bottom:12px">Here I post some of my music:</p>
+          <iframe width="100%" height="150" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1363910395&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/stavborg" title="Jonas Stavborg" target="_blank" style="color: #cccccc; text-decoration: none;">Jonas Stavborg</a> · <a href="https://soundcloud.com/stavborg/call-for-me" title="Call for me" target="_blank" style="color: #cccccc; text-decoration: none;">Call for me</a></div>
+        </article>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/wd2Zcr8nDW4?si=cEQNNdpq5wB_42qU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
+
+        <article class="box" id="links">
+          <h1>LINKS</h1>
+          <ul class="links-list">
+            <li><a href="https://alteredrage.bandcamp.com/" target="_blank">Altered Rage</a></li>
+            <li><a href="https://www.axisofdespair.com/" target="_blank">Axis of Despair</a></li>
+            <li><a href="https://www.youtube.com/@chromaform" target="_blank">Chromaform</a></li>
+            <li><a href="https://www.youtube.com/user/MrGul" target="_blank">MrGul</a></li>
+            <li><a href="https://www.teratogenesis.net/" target="_blank">Teratogenesis</a></li>
+            <li><a href="https://www.facebook.com/thewinchesterwidowmakers/" target="_blank">The Winchester Widowmakers</a></li>
+          </ul>
+        </article>
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
+
+        <article class="box" id="guestbook">
+          <h1>GUESTBOOK</h1>
+          <p style="margin-top:8px">Leave a message for the world to see! 🩸</p>
+          
+          <!-- Guestbook Entries Display -->
+          <div id="guestbook-entries" style="margin:12px 0;"></div>
+        
+          
+          <!-- Guestbook Form -->
+          <form id="guestbook-form" action="https://formspree.io/f/xblpzodr" method="POST">
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <input name="name" placeholder="Name" required style="flex:0 0 160px;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede">
+              <input name="email" type="email" placeholder="Email (optional)" style="flex:1;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede">
+            </div>
+            <div style="margin-top:8px">
+              <textarea name="message" placeholder="Message" rows="4" required style="width:100%;padding:8px;border-radius:4px;border:1px solid #330000;background:#0b0202;color:#ffdede"></textarea>
+            </div>
+            <div style="margin-top:8px">
+              <button type="submit" id="submit-btn" style="padding:8px 14px;border-radius:6px;border:2px solid #3b0000;background:#1a0000;color:#ffdede;font-weight:700">SCRIBE THIS</button>
+              <span id="form-status" style="margin-left:12px;font-size:12px;"></span>
+            </div>
+            <input type="hidden" name="_subject" value="New Guestbook Entry - Stavb.org">
+            <input type="hidden" name="_next" value="https://stavborg.github.io/#guestbook">
+          </form>
+        </article>
+        <img class="bloodbar" src="assets/bloodbar_e0.gif" alt="blood bar">
+      </section>
+    </div>
+
+    <footer>
+      <div style="text-align:center;color:#f0dcdc;font-size:11px;margin-top:12px">
+        &copy; <span id="current-year">2023</span> Stavb.org - All rights reserved. | <a href="#guestbook" style="color:#ffbdbd;text-decoration:underline">Sign the guestbook</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Auto-update age calculation
+    function calculateAge() {
+      // UPDATE YOUR BIRTH DATE HERE (YYYY, MM-1, DD) - Note: months are 0-indexed in JavaScript
+      const birthDate = new Date(1983, 6, 8); // Replace with your birth date: Year, Month-1, Day
+      const today = new Date();
+      
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+      
+      // Adjust age if birthday hasn't occurred this year
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      
+      return age;
+    }
+
+    // Visitor counter with multiple fallbacks
+    function updateVisitorCount() {
+      const visitorElement = document.getElementById('visitor-count');
+      
+      // Try multiple APIs for reliability
+      const apis = [
+        // Primary: CountAPI (may be unreliable)
+        () => fetch('https://api.countapi.xyz/hit/stavborg.github.io/visits')
+          .then(r => r.json())
+          .then(d => d.value),
+        
+        // Fallback 1: Simple counting service
+        () => fetch('https://api.counterapi.dev/v1/stavborg-github-io/visits/up')
+          .then(r => r.json())
+          .then(d => d.count),
+        
+        // Fallback 2: localStorage with simulated growth
+        () => {
+          let count = parseInt(localStorage.getItem('visitor-count') || '1337');
+          // Add some realistic growth simulation
+          const today = new Date().toDateString();
+          const lastVisit = localStorage.getItem('last-visit');
+          
+          if (lastVisit !== today) {
+            count += Math.floor(Math.random() * 5) + 1; // 1-5 new visitors per day
+            localStorage.setItem('visitor-count', count.toString());
+            localStorage.setItem('last-visit', today);
+          }
+          
+          return Promise.resolve(count);
+        }
+      ];
+      
+      // Try APIs in order
+      async function tryApis() {
+        for (const api of apis) {
+          try {
+            const count = await api();
+            if (count && count > 0) {
+              const formattedCount = count.toString().padStart(6, '0');
+              visitorElement.textContent = formattedCount;
+              return;
+            }
+          } catch (error) {
+            console.log('API failed, trying next...', error);
+          }
+        }
+        
+        // If all fail, show a retro error
+        visitorElement.textContent = 'ERROR!';
+        setTimeout(() => {
+          visitorElement.textContent = '133769'; // Fallback number
+        }, 2000);
+      }
+      
+      tryApis();
+    }
+
+    // Guestbook functionality
+    function loadGuestbookEntries() {
+      const entriesDiv = document.getElementById('guestbook-entries');
+      entriesDiv.innerHTML = '<div class="loading">Loading guestbook entries...</div>';
+      
+      // Try to load from localStorage for demo purposes
+      const savedEntries = localStorage.getItem('guestbook-entries');
+      
+      if (savedEntries) {
+        const entries = JSON.parse(savedEntries);
+        displayGuestbookEntries(entries);
+      } else {
+        // Initialize with a welcome entry
+        const welcomeEntries = [
+          {
+            name: "Jonas",
+            message: "Welcome to my guestbook! Leave me a message! 🩸",
+            date: new Date().toLocaleDateString()
+          }
+        ];
+        displayGuestbookEntries(welcomeEntries);
+        localStorage.setItem('guestbook-entries', JSON.stringify(welcomeEntries));
+      }
+    }
+
+    function displayGuestbookEntries(entries) {
+      const entriesDiv = document.getElementById('guestbook-entries');
+      
+      if (entries.length === 0) {
+        entriesDiv.innerHTML = '<div class="loading">No entries yet. Be the first to sign!</div>';
+        return;
+      }
+      
+      const entriesHtml = entries.reverse().map(entry => `
+        <div class="guestbook-entry">
+          <div class="guestbook-header">
+            <span class="guestbook-name">${escapeHtml(entry.name)}</span>
+            <span class="guestbook-date">${entry.date}</span>
+          </div>
+          <div class="guestbook-message">${escapeHtml(entry.message)}</div>
+        </div>
+      `).join('');
+      
+      entriesDiv.innerHTML = entriesHtml;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function clearGuestbook() {
+      if (confirm('🩸 Are you sure you want to clear all guestbook entries? This cannot be undone!')) {
+        localStorage.removeItem('guestbook-entries');
+        const entriesDiv = document.getElementById('guestbook-entries');
+        entriesDiv.innerHTML = '<div class="loading">Guestbook cleared! 🗑️</div>';
+        
+        // Reinitialize with welcome message
+        setTimeout(() => {
+          loadGuestbookEntries();
+        }, 1500);
+      }
+    }
+
+    function handleGuestbookSubmit() {
+      const form = document.getElementById('guestbook-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const status = document.getElementById('form-status');
+      
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const name = formData.get('name');
+        const message = formData.get('message');
+        
+        if (!name || !message) {
+          status.textContent = '❌ Please fill in name and message';
+          status.style.color = '#ff7676';
+          return;
+        }
+        
+        // Add to localStorage for immediate display
+        const savedEntries = JSON.parse(localStorage.getItem('guestbook-entries') || '[]');
+        const newEntry = {
+          name: name,
+          message: message,
+          date: new Date().toLocaleDateString()
+        };
+        savedEntries.push(newEntry);
+        localStorage.setItem('guestbook-entries', JSON.stringify(savedEntries));
+        displayGuestbookEntries(savedEntries);
+        
+        // Show success message
+        submitBtn.textContent = 'SENT! 🩸';
+        status.textContent = '✅ Message added to guestbook!';
+        status.style.color = '#90ff90';
+        
+        // Reset form
+        form.reset();
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          submitBtn.textContent = 'SCRIBE THIS';
+          status.textContent = '';
+        }, 3000);
+        
+        // Also submit to Formspree for email notifications
+        fetch('https://formspree.io/f/xblpzodr', {
+          method: 'POST',
+          body: formData
+        }).catch(error => console.log('Email notification failed:', error));
+      });
+    }
+
+    // Update age, visitor count, and initialize guestbook when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Update age
+      const ageElement = document.getElementById('current-age');
+      if (ageElement) {
+        ageElement.textContent = calculateAge();
+      }
+      
+      // Update current year in footer
+      const yearElement = document.getElementById('current-year');
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+      }
+      
+      // Update visitor count
+      updateVisitorCount();
+      
+      // Initialize guestbook
+      loadGuestbookEntries();
+      handleGuestbookSubmit();
+    });
+  </script>
+</body>
+</html>
