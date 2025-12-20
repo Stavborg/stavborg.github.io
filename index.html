@@ -453,6 +453,11 @@
     align-items: center;
 }
 
+.image-container {
+    position: relative; /* Allows absolute positioning of the year stamp */
+    display: inline-block; /* Keeps the container sized to the image */
+}
+
 .artist-image {
     width: 100%;
     max-width: 300px;
@@ -463,6 +468,20 @@
 
 .artist-image:hover {
     transform: scale(1.05);
+}
+
+.year-stamp {
+    position: absolute;
+    bottom: 10px; /* Position near the bottom */
+    right: 10px; /* Position near the right edge */
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for contrast */
+    color: var(--accent-gold); /* Matches your site's gold accent */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Adds readability */
+    z-index: 1; /* Ensures it appears above the image */
 }
 
 /* Responsive adjustments for portrait gallery */
@@ -477,6 +496,11 @@
     .artist-image {
         min-width: 200px;
         max-width: 200px;
+    }
+    
+    .year-stamp {
+        font-size: 0.8rem; /* Slightly smaller on mobile for better fit */
+        padding: 3px 6px;
     }
 }
 
@@ -767,32 +791,67 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--text-white);
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+        /* Simplified Social Links Styling */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
 
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: var(--medium-grey);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+.social-link {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.5rem;
+    border: 2px solid rgba(196, 30, 58, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
 
-        .social-link:hover {
-            background: var(--accent-red);
-            transform: translateY(-3px);
-        }
+.social-link:hover {
+    background: var(--accent-red);
+    color: var(--text-white);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(196, 30, 58, 0.4);
+    border-color: var(--accent-gold);
+}
+
+.location-note {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.location-note i {
+    color: var(--accent-gold);
+    margin-right: 0.5rem;
+}
+
+/* Responsive adjustments for social links */
+@media (max-width: 768px) {
+    .social-links {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
 
         /* CONTACT FORM */
         .contact-form {
@@ -923,6 +982,106 @@
     width: 100%;
   }
 }
+
+/* Social Media Page Styling */
+.section-subtitle {
+    text-align: center;
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.social-media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.social-card {
+    background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-light);
+    border: 1px solid rgba(196, 30, 58, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.social-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(196, 30, 58, 0.1) 0%, transparent 70%);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.social-card:hover::before {
+    opacity: 1;
+    animation: rotate 3s linear infinite;
+}
+
+.social-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(196, 30, 58, 0.3);
+    border-color: rgba(196, 30, 58, 0.3);
+}
+
+.social-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, var(--accent-red), #e63946);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+    color: var(--text-white);
+    box-shadow: 0 5px 15px rgba(196, 30, 58, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.social-card:hover .social-icon {
+    transform: scale(1.1);
+}
+
+.social-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--accent-red);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 5px rgba(196, 30, 58, 0.4);
+}
+
+.social-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.location-note {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.location-note i {
+    color: var(--accent-gold);
+    margin-right: 0.5rem;
+}
+
     </style>
 </head>
 <body style="background-image:url('assets/images/bg_3.png')">
@@ -948,7 +1107,7 @@
                 <li class="nav-item"><a href="#music">Music</a></li>
                 <li class="nav-item"><a href="#videos">Videos</a></li>
                 <li class="nav-item"><a href="#about">About</a></li>
-                <li class="nav-item"><a href="#contact">Contact</a></li>
+                <li class="nav-item"><a href="#contact">Connect</a></li>
             </ul>
         </div>
     </nav>
@@ -1052,8 +1211,8 @@
             </div>
             <div class="album-card">
                 <img src="assets/images/creator.png" alt="Creator" class="album-cover">
-                <h3 class="album-title">Creator</h3>
-                <p class="album-year">2022</p>
+                <h3 class="album-title">Creator (Remake)</h3>
+                <p class="album-year">2022 (Originally 2007)</p>
                 <div class="audio-player">
                     <div class="player-controls">
                         <button class="play-btn" data-audio="audio4">
@@ -1104,8 +1263,8 @@
             </div>
             <div class="album-card">
                 <img src="assets/images/precious.jpg" alt="Precious" class="album-cover">
-                <h3 class="album-title">Precious</h3>
-                <p class="album-year">2021</p>
+                <h3 class="album-title">Precious (Remake)</h3>
+                <p class="album-year">2021 (Originally 2000)</p>
                 <div class="audio-player">
                     <div class="player-controls">
                         <button class="play-btn" data-audio="audio6">
@@ -1143,7 +1302,7 @@
         <!-- ADDED width and height attributes -->
        <iframe width="560" height="315" src="https://www.youtube.com/embed/wd2Zcr8nDW4?si=9wJXfxS4GPAmZfId" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
-      <h4 class="video-title">Morbus - Life-support Prison</h4>
+      <h4 class="video-title">Morbus - Life-support Prison (2009)</h4>
     </div>
 
     <!-- Vimeo embed -->
@@ -1160,132 +1319,113 @@
           allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-      <h4 class="video-title">Eikonos - Snuffwad (Featured on guitars and vocals)</h4>
+      <h4 class="video-title">Eikonos - Snuffwad (2021) - Featured on Guitars and Vocals</h4>
     </div>
+    <div class="video-grid">
+        <!-- YouTube embed (responsive) -->
+        <div class="video-card">
+            <div class="responsive-embed">
+            <!-- ADDED width and height attributes -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/KTAsVPWDBdU?si=cmYH5_HUVYNmLt1x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h4 class="video-title">Demo 2007 (Lowfi)</h4>
+        </div>
   </div>
 </section>
 
     <!-- Update the About Section HTML to wrap the portraits in a gallery div -->
     <section class="section fade-in" id="about">
-        <h2 class="section-title">About</h2>
-        <div class="about-content">
-            <div class="portrait-gallery">
+    <h2 class="section-title">About</h2>
+    <div class="about-content">
+        <div class="portrait-gallery">
+            <div class="image-container">
                 <img src="assets/images/portrait.jpg" alt="STAVB.ORG" class="artist-image">
+                <span class="year-stamp">2001</span>
+            </div>
+            <div class="image-container">
                 <img src="assets/images/portrait2.jpg" alt="STAVB.ORG" class="artist-image">
+                <span class="year-stamp">2004</span>
+            </div>
+            <div class="image-container">
                 <img src="assets/images/portrait3.jpg" alt="STAVB.ORG" class="artist-image">
-            </div>
-            <div class="about-text">
-                <h3 class="about-title">Forged, Broken, Reborn</h3>
-                <div class="about-story">
-                    <p class="story-paragraph">
-                        Stavborg was forged in the year 2000, crawling out of a half-formed high-school band called <em>The Project</em>, hammering out raw riffs on tiny stages. That same year the path twisted into <em>The Family Grinders</em>, where a madman named Elvis dragged me deeper into the world of recording, noise-craft, and the violent alchemy of production.
-                    </p>
-
-                    <p class="story-paragraph">
-                        The first real beast took shape: <em>Repulsivore</em>, a two-man onslaught with Erik. After its rupture, I went solitary—sharpening skills, hardening sound, carving out my own identity in the dark.
-                    </p>
-
-                    <p class="story-paragraph">
-                        Then came <em>Morbus</em>, another collaboration with Erik, reinforced by guitarist Jonas. Creative clashes tore it apart, but from the wreckage Jonas and I spawned <em>Odjur</em>—a monster that never fully rose but still left teeth marks.
-                    </p>
-
-                    <p class="story-paragraph">
-                        When Odjur dissolved, I descended back into the solitary grind. Years later, after moving to Argentina, I re-emerged in a Gothenburg-leaning melodic death band. It died for reasons that stay buried.
-                    </p>
-
-                    <p class="story-paragraph">
-                        In 2018 the silence finally snapped, and I returned to where this all began: alone, relentless, and uncompromising.
-                    </p>
-
-                    <p class="story-conclusion">
-                        <strong>Stavborg</strong>—solo, but never silent.
-                    </p>
-                </div>
+                <span class="year-stamp">2010</span>
             </div>
         </div>
-        
-        <div class="stats-grid">
-            <div class="stat-item fade-in">
-                <div class="stat-number">24</div>
-                <div class="stat-label">Years Active</div>
-            </div>
-            <div class="stat-item fade-in">
-                <div class="stat-number">6</div>
-                <div class="stat-label">Band Projects</div>
-            </div>
-            <div class="stat-item fade-in">
-                <div class="stat-number">Solo</div>
-                <div class="stat-label">Current Status</div>
-            </div>
-            <div class="stat-item fade-in">
-                <div class="stat-number">∞</div>
-                <div class="stat-label">Creative Drive</div>
+        <div class="about-text">
+            <h3 class="about-title">Forged, Broken, Reborn</h3>
+            <div class="about-story">
+                <p class="story-paragraph">
+                    Stavborg was forged in the year 2000, crawling out of a half-formed high-school band called <em>The Project</em>, hammering out raw riffs on tiny stages. That same year the path twisted into <em>The Family Grinders</em>, where a madman named Elvis dragged me deeper into the world of recording, noise-craft, and the violent alchemy of production.
+                </p>
+
+                <p class="story-paragraph">
+                    The first real beast took shape: <em>Repulsivore</em>, a two-man onslaught with Erik. After its rupture, I went solitary—sharpening skills, hardening sound, carving out my own identity in the dark.
+                </p>
+
+                <p class="story-paragraph">
+                    Then came <em>Morbus</em>, another collaboration with Erik, reinforced by guitarist Jonas. Creative clashes tore it apart, but from the wreckage Jonas and I spawned <em>Odjur</em>—a monster that never fully rose but still left teeth marks.
+                </p>
+
+                <p class="story-paragraph">
+                    When Odjur dissolved, I descended back into the solitary grind. Years later, after moving to Argentina, I re-emerged in a Gothenburg-leaning melodic death band. It died for reasons that stay buried.
+                </p>
+
+                <p class="story-paragraph">
+                    In 2018 the silence finally snapped, and I returned to where this all began: alone, relentless, and uncompromising.
+                </p>
+
+                <p class="story-conclusion">
+                    <strong>Stavborg</strong>—solo, but never silent.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+    
+    <div class="stats-grid">
+        <div class="stat-item fade-in">
+            <div class="stat-number">24</div>
+            <div class="stat-label">Years Active</div>
+        </div>
+        <div class="stat-item fade-in">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Band Projects</div>
+        </div>
+        <div class="stat-item fade-in">
+            <div class="stat-number">Solo</div>
+            <div class="stat-label">Current Status</div>
+        </div>
+        <div class="stat-item fade-in">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Creative Drive</div>
+        </div>
+    </div>
+</section>
 
     <!-- Contact Section -->
     <section class="section fade-in" id="contact">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h3>Get in Touch</h3>
-                <div class="contact-item">
-                </div>
-                <div class="contact-item">
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div>
-                        <strong>Based in</strong><br>
-                        Buenos Aires, Argentina
-                    </div>
-                </div>
-                
-                <div class="social-links">
-                    <a href="https://soundcloud.com/Stavborg" class="social-link">
-                        <i class="fab fa-soundcloud"></i>
-                    </a>
-                    <a href="https://open.spotify.com/user/polecastle" class="social-link">
-                        <i class="fab fa-spotify"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@JonasStavborg" class="social-link">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://www.instagram.com/suecologico/" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://stavborg.bandcamp.com/" class="social-link">
-                        <i class="fab fa-bandcamp"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <form class="contact-form" action="https://formspree.io/f/mzzobogw" method="POST">
-    <input type="hidden" name="_subject" value="Website contact">
-    <input type="hidden" name="_language" value="en">
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" required>
-    </div>
-    <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">
-        <i class="fas fa-paper-plane"></i> Send Message
-    </button>
-</form>
+        <h2 class="section-title">Connect</h2>
+        <div class="social-links">
+            <a href="https://soundcloud.com/Stavborg" class="social-link" target="_blank" rel="noopener" title="SoundCloud">
+                <i class="fab fa-soundcloud"></i>
+            </a>
+            <a href="https://open.spotify.com/user/polecastle" class="social-link" target="_blank" rel="noopener" title="Spotify">
+                <i class="fab fa-spotify"></i>
+            </a>
+            <a href="https://www.youtube.com/@JonasStavborg" class="social-link" target="_blank" rel="noopener" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.instagram.com/suecologico/" class="social-link" target="_blank" rel="noopener" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://stavborg.bandcamp.com/" class="social-link" target="_blank" rel="noopener" title="Bandcamp">
+                <i class="fab fa-bandcamp"></i>
+            </a>
+            <a href="https://www.reverbnation.com/jonasstavborg" class="social-link" target="_blank" rel="noopener" title="ReverbNation">
+                <i class="fas fa-star"></i>
+            </a>
+        </div>
+        <div class="location-note">
+            <p><i class="fas fa-map-marker-alt"></i> Based in Buenos Aires, Argentina</p>
         </div>
     </section>
 
