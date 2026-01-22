@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAVBORG | Professional Air Guitarist & Table Drummer</title>
+    
+    <!-- Meta Tags for SEO and Social Media -->
+    <meta name="description" content="STAVBORG - Listen to atmospheric wanking.">
+    <meta name="keywords" content="extreme metal, death metal, atmospheric metal, argentina, stavborg, metal music, professional musician">
+    <meta name="author" content="STAVBORG">
+    <meta property="og:title" content="STAVBORG | Professional Air Guitarist & Table Drummer">
+    <meta property="og:description" content="extreme metal, death metal, atmospheric metal, argentina, stavborg, metal music, professional musician">
+    <meta property="og:image" content="https://stavb.org/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://stavb.org">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        /* 2025 MODERN METAL ARTIST STYLING */
+        :root {
+            --primary-black: #000000;
+            --rich-black: #0a0a0a;
+            --dark-grey: #1a1a1a;
+            --medium-grey: #2a2a2a;
+            --light-grey: #999999;
+            --accent-red: #c41e3a;
+            --accent-gold: #d4af37;
+            --text-white: #ffffff;
+            --text-light: #e5e5e5;
+            --text-muted: #b3b3b3;
+            --navbar-height: 56px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--primary-black), var(--rich-black));
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: 
+                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('assets/images/hero-bg.jpg') center/cover no-repeat;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.8) 70%);
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-logo {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(196, 30, 58, 0.5);
+            letter-spacing: 0.1em;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(196, 30, 58, 0.5); }
+            to { text-shadow: 0 0 30px rgba(196, 30, 58, 0.8), 0 0 40px rgba(196, 30, 58, 0.3); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-red), #e63946);
+            color: var(--text-white);
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(196, 30, 58, 0.4);
+        }
+
+        /* NAVIGATION - fixed so hamburger is always visible without shrinking the logo */
+        :root { --navbar-height: 56px; }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--navbar-height);
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            /* keep content centered but allow absolute children to pin to viewport edges */
+            padding: 0;
+            overflow: visible;
+        }
+
+        /* content wrapper stays centered and never forces page overflow */
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 12px;       /* small horizontal padding */
+            box-sizing: border-box;
+            min-width: 0;
+        }
+
+        /* keep logo size as-is, but allow it to shrink if necessary (no forced min) */
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;    /* do not reduce this per your request */
+            font-weight: 700;
+            color: var(--accent-red);
+            text-decoration: none;
+            flex: 0 1 auto;       /* allow shrink but prefer intrinsic size */
+            min-width: 0;         /* important so it can shrink when space runs out */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin-left: auto;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .nav-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+        display: none;
+        position: absolute;
+        right: 12px;               /* always top-right of viewport/navbar */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        padding: 6px;
+        background: transparent;
+        border: 0;
+        z-index: 2000;
+        cursor: pointer;
+        box-sizing: content-box;
+    }
+    .nav-toggle .nav-toggle-bar {
+        display: block;
+        width: 26px;
+        height: 2px;
+        background: var(--text-light);
+        margin: 4px 0;
+        transition: transform .25s ease, opacity .25s ease;
+    }
+
+        /* Mobile menu styles (added) */
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: 0;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 6px;
+        }
+        .nav-toggle .nav-toggle-bar {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--text-light);
+            margin: 4px 0;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        /* Mobile behaviour */
+        @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+            /* make sure nav-container doesn't overflow horizontally */
+            .nav-container { padding: 0 1rem; }
+            .nav-menu {
+                display: none;
+                position: fixed;             /* fixed so it never pushes beyond viewport */
+                top: var(--navbar-height);
+                left: 0;
+                right: 0;
+                background: rgba(10,10,10,0.98);
+                backdrop-filter: blur(6px);
+                flex-direction: column;
+                padding: 0.75rem 1rem;
+                gap: 0.5rem;
+                z-index: 1090;
+                box-sizing: border-box;
+                margin: 0;
+                max-width: 100vw;            /* important: never exceed viewport width */
+                overflow-x: hidden;
+            }
+            .nav-menu.open { display: flex; }
+            .nav-item { width: 100%; }
+            .nav-item a {
+                display: block;
+                padding: 0.75rem 0.5rem;
+                font-size: 1rem;
+                color: var(--text-light);
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            /* Optional: animate toggle into 'X' when open */
+            .nav-toggle.open .nav-toggle-bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+            .nav-toggle.open .nav-toggle-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+            .nav-toggle.open .nav-toggle-bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+            /* hide original desktop nav-menu layout */
+            .nav-menu { gap: 1rem; }
+        }
+
+        /* extra small screens: nudge toggle inward so it's always visible */
+        @media (max-width: 420px) {
+    .nav-container { padding: 0 8px; }
+    .nav-toggle { right: 8px; }
+}
+
+        /* Small-screen nav fixes (added) */
+
+/* Safety: ensure nav-menu can shrink on larger layouts too */
+.nav-menu { min-width: 0; }
+
+        /* SECTIONS */
+        .section {
+            padding: 6rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        #about {
+            background: linear-gradient(135deg, rgba(10,10,10,0.9), rgba(26,26,26,0.7)), url('assets/images/hero-bg.jpg') center/cover no-repeat;
+            position: relative;
+        }
+
+        #about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 0;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--accent-red);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-red), var(--accent-gold));
+        }
+
+        /* MUSIC SECTION */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .album-card {
+            background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(196, 30, 58, 0.1);
+        }
+
+        .album-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border-color: rgba(196, 30, 58, 0.3);
+        }
+
+        .album-cover {
+            width: 100%;
+            max-width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .album-title {
+            font-size: 1.5rem;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .album-year {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* AUDIO PLAYER */
+        .audio-player {
+            background: var(--dark-grey);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-red);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background: #e63946;
+            transform: scale(1.1);
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 6px;
+            background: var(--medium-grey);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--accent-red), var(--accent-gold));
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* Portrait Gallery Styling */
+.portrait-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    background: rgba(26, 26, 26, 0.8);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(196, 30, 58, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.image-container {
+    position: relative; /* Allows absolute positioning of the year stamp */
+    display: inline-block; /* Keeps the container sized to the image */
+}
+
+.artist-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.artist-image:hover {
+    transform: scale(1.05);
+}
+
+.year-stamp {
+    position: absolute;
+    bottom: 10px; /* Position near the bottom */
+    right: 10px; /* Position near the right edge */
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background for contrast */
+    color: var(--accent-gold); /* Matches your site's gold accent */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Adds readability */
+    z-index: 1; /* Ensures it appears above the image */
+}
+
+/* Responsive adjustments for portrait gallery */
+@media (max-width: 768px) {
+    .portrait-gallery {
+        flex-direction: row;
+        gap: 1rem;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+    }
+    
+    .artist-image {
+        min-width: 200px;
+        max-width: 200px;
+    }
+    
+    .year-stamp {
+        font-size: 0.8rem; /* Slightly smaller on mobile for better fit */
+        padding: 3px 6px;
+    }
+}
+
+/* Enhanced About Section Styling */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.artist-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(1.1) contrast(1.05);
+    border: 2px solid rgba(196, 30, 58, 0.3);
+}
+
+.artist-image:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2) contrast(1.1);
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    background: rgba(26, 26, 26, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(196, 30, 58, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.about-title {
+    font-family: 'Cinzel', serif;
+    color: var(--accent-red);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(196, 30, 58, 0.3);
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 1rem;
+}
+
+.about-story {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.4));
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(196, 30, 58, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-story::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent-red), var(--accent-gold));
+}
+
+.story-paragraph {
+    margin-bottom: 1.8rem;
+    padding-left: 0;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.story-paragraph:hover {
+    transform: translateX(5px);
+    color: var(--text-light);
+}
+
+.year-highlight {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--accent-red), #e63946);
+    color: var(--text-white);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    box-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
+}
+
+.story-paragraph em {
+    color: var(--accent-gold);
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(212, 175, 55, 0.3);
+}
+
+.story-conclusion {
+    background: linear-gradient(45deg, rgba(196, 30, 58, 0.1), rgba(212, 175, 55, 0.1));
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-red);
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.story-conclusion strong {
+    color: var(--accent-red);
+    font-size: 1.5rem;
+    font-family: 'Cinzel', serif;
+    text-shadow: 0 2px 5px rgba(196, 30, 58, 0.4);
+}
+
+/* Enhanced Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));
+    border-radius: 15px;
+    border: 1px solid rgba(196, 30, 58, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(196, 30, 58, 0.1) 0%, transparent 70%);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.stat-item:hover::before {
+    opacity: 1;
+    animation: rotate 3s linear infinite;
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(196, 30, 58, 0.2);
+    border-color: rgba(196, 30, 58, 0.3);
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent-red);
+    margin-bottom: 0.5rem;
+    font-family: 'Cinzel', serif;
+    text-shadow: 0 3px 10px rgba(196, 30, 58, 0.4);
+    position: relative;
+    z-index: 2;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+/* Responsive Design for About Section */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .portrait-gallery {
+        padding: 1rem;
+    }
+    
+    .artist-image {
+        max-width: 250px;
+    }
+    
+    .about-text {
+        padding: 1.5rem;
+    }
+    
+    .about-title {
+        font-size: 2rem;
+    }
+    
+    .about-story {
+        padding: 1.5rem;
+    }
+    
+    .story-paragraph {
+        padding-left: 0.5rem;
+    }
+    
+    .year-highlight {
+        display: block;
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+    }
+}
+
+/* Add subtle animation to the story paragraphs */
+.story-paragraph {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.story-paragraph:nth-child(1) { animation-delay: 0.1s; }
+.story-paragraph:nth-child(2) { animation-delay: 0.2s; }
+.story-paragraph:nth-child(3) { animation-delay: 0.3s; }
+.story-paragraph:nth-child(4) { animation-delay: 0.4s; }
+.story-paragraph:nth-child(5) { animation-delay: 0.5s; }
+
+.story-conclusion {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+        /* STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));
+            border-radius: 10px;
+            border: 1px solid rgba(196, 30, 58, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* CONTACT SECTION */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+        }
+
+        /* Simplified Social Links Styling */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.social-link {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.5rem;
+    border: 2px solid rgba(196, 30, 58, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-link:hover {
+    background: var(--accent-red);
+    color: var(--text-white);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(196, 30, 58, 0.4);
+    border-color: var(--accent-gold);
+}
+
+.location-note {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.location-note i {
+    color: var(--accent-gold);
+    margin-right: 0.5rem;
+}
+
+/* Responsive adjustments for social links */
+@media (max-width: 768px) {
+    .social-links {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+        /* CONTACT FORM */
+        .contact-form {
+            background: var(--dark-grey);
+            padding: 2.5rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--medium-grey);
+            border: 1px solid rgba(196, 30, 58, 0.1);
+            border-radius: 5px;
+            color: var(--text-light);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-red);
+            box-shadow: 0 0 10px rgba(196, 30, 58, 0.2);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--rich-black);
+            padding: 3rem 0 1rem;
+            text-align: center;
+            border-top: 1px solid var(--dark-grey);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Videos section */
+#videos { padding-top: 3rem; padding-bottom: 4rem; }
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+.video-card {
+  background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(196,30,58,0.08);
+  position: relative; /* ensure stacking context */
+  z-index: 1;
+}
+.video-player video,
+.responsive-embed iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  display: block;
+}
+.video-player { aspect-ratio: 16/9; overflow: hidden; }
+
+/* responsive embed: keep aspect ratio and ensure iframe is clickable */
+.responsive-embed { 
+  position: relative; 
+  width: 100%; 
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0; 
+  overflow: hidden;
+}
+/* ADDED: ensure iframe has a visible minimum height so it never collapses */
+.responsive-embed iframe { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  border: 0; 
+  pointer-events: auto; 
+  min-height: 200px; /* ensure visible area on small screens / browsers that don't honor padding hack */
+}
+
+/* small screens */
+@media (max-width:768px) { .video-player { aspect-ratio: 16/9; } }
+
+.video-fallback { margin-top: .5rem; color: var(--text-muted); font-size: .95rem; }
+.video-fallback a { color: var(--accent-gold); text-decoration: underline; }
+
+/* Make contact section single-column on phones/tablets and prevent overflow */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr !important; /* switch to one column */
+    gap: 1.5rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .contact-info,
+  .contact-form {
+    width: 100%;
+    min-width: 0; /* important so flex/grid children can shrink */
+  }
+
+  .contact-form {
+    padding: 1.25rem;
+  }
+
+  /* Ensure form controls don't force horizontal scroll */
+  .contact-form input,
+  .contact-form textarea,
+  .form-group {
+    max-width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+/* Social Media Page Styling */
+.section-subtitle {
+    text-align: center;
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.social-media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.social-card {
+    background: linear-gradient(135deg, var(--dark-grey), var(--medium-grey));
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-light);
+    border: 1px solid rgba(196, 30, 58, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.social-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(196, 30, 58, 0.1) 0%, transparent 70%);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.social-card:hover::before {
+    opacity: 1;
+    animation: rotate 3s linear infinite;
+}
+
+.social-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(196, 30, 58, 0.3);
+    border-color: rgba(196, 30, 58, 0.3);
+}
+
+.social-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, var(--accent-red), #e63946);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+    color: var(--text-white);
+    box-shadow: 0 5px 15px rgba(196, 30, 58, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.social-card:hover .social-icon {
+    transform: scale(1.1);
+}
+
+.social-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--accent-red);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 5px rgba(196, 30, 58, 0.4);
+}
+
+.social-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.location-note {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.location-note i {
+    color: var(--accent-gold);
+    margin-right: 0.5rem;
+}
+
+    </style>
+</head>
+<body style="background-image:url('assets/images/bg_3.png')">
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loading">
+        <div class="loading-logo">STAVB.ORG</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">STAVB.ORG</a>
+
+            <!-- Mobile menu toggle (added) -->
+            <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#music">Music</a></li>
+                <li class="nav-item"><a href="#videos">Videos</a></li>
+                <li class="nav-item"><a href="#about">About</a></li>
+                <li class="nav-item"><a href="#contact">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home" style="background-image:url('assets/images/bg_2.png')">
+        <div class="hero-content">
+            <img src="assets/images/logo.png" alt="STAVB Logo" class="hero-logo" style="width:100%">
+            <div class="cta-buttons">
+                <a href="#music" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Listen Now
+                </a>
+                <a href="#about" class="btn btn-secondary">
+                    <i class="fas fa-user"></i> About
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section class="section fade-in" id="music">
+        <h2 class="section-title">Discography</h2>
+        <div class="music-grid">
+            <div class="album-card">
+                <img src="assets/images/call_for_me.png" alt="Call for Me" class="album-cover">
+                <h3 class="album-title">Call for Me</h3>
+                <p class="album-year">2022</p>
+                <div class="audio-player">
+                    <div class="player-controls">
+                        <button class="play-btn" data-audio="audio1">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="time">0:00 / 2:05</span>
+                    </div>
+                    
+                    <!-- Add the actual audio element -->
+                    <audio id="audio1" preload="metadata">
+                        <source src="assets/audio/call_for_me.mp3" type="audio/mpeg">
+                        <source src="assets/audio/call_for_me.ogg" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <a style="display:none" href="#" class="btn btn-secondary" style="margin-top: 1rem;">
+                    <i class="fab fa-spotify"></i> Stream Album
+                </a>
+            </div>
+            <div class="album-card">
+                <img src="assets/images/infernal_bbq.png" alt="Infernal BBQ" class="album-cover">
+                <h3 class="album-title">Infernal BBQ</h3>
+                <p class="album-year">2022</p>
+                <div class="audio-player">
+                    <div class="player-controls">
+                        <button class="play-btn" data-audio="audio2">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="time">0:00 / 1:25</span>
+                    </div>
+                    
+                    <!-- Add the actual audio element -->
+                    <audio id="audio2" preload="metadata">
+                        <source src="assets/audio/infernal_bbq.mp3" type="audio/mpeg">
+                        <source src="assets/audio/infernal_bbq.ogg" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <a style="display:none" href="#" class="btn btn-secondary" style="margin-top: 1rem;">
+                    <i class="fab fa-spotify"></i> Stream Album
+                </a>
+            </div>
+            <div class="album-card">
+                <img src="assets/images/dissolves.png" alt="Dissolves" class="album-cover">
+                <h3 class="album-title">Dissolves</h3>
+                <p class="album-year">2022</p>
+                <div class="audio-player">
+                    <div class="player-controls">
+                        <button class="play-btn" data-audio="audio3">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="time">0:00 / 0:26</span>
+                    </div>
+                    
+                    <!-- Add the actual audio element -->
+                    <audio id="audio3" preload="metadata">
+                        <source src="assets/audio/dissolves.mp3" type="audio/mpeg">
+                        <source src="assets/audio/dissolves.ogg" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <a style="display:none" href="#" class="btn btn-secondary" style="margin-top: 1rem;">
+                    <i class="fab fa-spotify"></i> Stream Album
+                </a>
+            </div>
+            <div class="album-card">
+                <img src="assets/images/creator.png" alt="Creator" class="album-cover">
+                <h3 class="album-title">Creator (Remake)</h3>
+                <p class="album-year">2022 (Originally 2007)</p>
+                <div class="audio-player">
+                    <div class="player-controls">
+                        <button class="play-btn" data-audio="audio4">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="time">0:00 / 1:36</span>
+                    </div>
+                    
+                    <!-- Add the actual audio element -->
+                    <audio id="audio4" preload="metadata">
+                        <source src="assets/audio/creator.mp3" type="audio/mpeg">
+                        <source src="assets/audio/creator.ogg" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <a style="display:none" href="#" class="btn btn-secondary" style="margin-top: 1rem;">
+                    <i class="fab fa-spotify"></i> Stream Album
+                </a>
+            </div>
+            <div class="album-card">
+                <img src="assets/images/when_we_were.png" alt="When We Were" class="album-cover">
+                <h3 class="album-title">When We Were</h3>
+                <p class="album-year">2022</p>
+                <div class="audio-player">
+                    <div class="player-controls">
+                        <button class="play-btn" data-audio="audio5">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="time">0:00 / 0:32</span>
+                    </div>
+                    
+                    <!-- Add the actual audio element -->
+                    <audio id="audio5" preload="metadata">
+                        <source src="assets/audio/when_we_were.mp3" type="audio/mpeg">
+                        <source src="assets/audio/when_we_were.ogg" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <a style="display:none" href="#" class="btn btn-secondary" style="margin-top: 1rem;">
+                    <i class="fab fa-spotify"></i> Stream Album
+                </a>
+            </div>
+            <div class="album-card">
+                <img src="assets/images/precious.jpg" alt="Precious" class="album-cover">
+                <h3 class="album-title">Precious (Remake)</h3>
+                <p class="album-year">2021 (Originally 2000)</p>
+                <div class="audio-player">
+                    <div class="player-controls">
+                        <button class="play-btn" data-audio="audio6">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="time">0:00 / 3:45</span>
+                    </div>
+                    
+                    <!-- Add the actual audio element -->
+                    <audio id="audio6" preload="metadata">
+                        <source src="assets/audio/precious.mp3" type="audio/mpeg">
+                        <source src="assets/audio/precious.ogg" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <a style="display:none" href="#" class="btn btn-secondary" style="margin-top: 1rem;">
+                    <i class="fab fa-spotify"></i> Stream Album
+                </a>
+            </div>
+        </div>
+
+    </section> <!-- end music section -->
+
+<!-- Videos Section -->
+<section class="section fade-in" id="videos">
+  <h2 class="section-title">Videos</h2>
+
+  <div class="video-grid">
+    <!-- YouTube embed (responsive) -->
+    <div class="video-card">
+      <div class="responsive-embed">
+        <!-- ADDED width and height attributes -->
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/wd2Zcr8nDW4?si=9wJXfxS4GPAmZfId" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <h4 class="video-title">Morbus - Life-support Prison (2009)</h4>
+    </div>
+
+    <!-- Vimeo embed -->
+    <div class="video-card">
+      <div class="responsive-embed">
+        <!-- ADDED width and height attributes -->
+        <iframe 
+          width="560" height="315"
+          src="https://player.vimeo.com/video/516394437?h=8fdca76802"
+          title="Eikonos - Snuffwad"
+          frameborder="0"
+          loading="lazy"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <h4 class="video-title">Eikonos - Snuffwad (2021) - Featured on Guitars and Vocals</h4>
+    </div>
+
+
+    <div class="video-card">
+        <div class="responsive-embed">
+        <!-- ADDED width and height attributes -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/KTAsVPWDBdU?si=cmYH5_HUVYNmLt1x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <h4 class="video-title">Demo 2007 (Lowfi)</h4>
+    </div>
+  </div>
+</section>
+
+    <!-- Update the About Section HTML to wrap the portraits in a gallery div -->
+    <section class="section fade-in" id="about">
+    <h2 class="section-title">About</h2>
+    <div class="about-content">
+        <div class="portrait-gallery">
+            <div class="image-container">
+                <img src="assets/images/Portrait1.jpeg" alt="STAVB.ORG" class="artist-image">
+                <span class="year-stamp">2001</span>
+            </div>
+            <div class="image-container">
+                <img src="assets/images/Portrait2.jpeg" alt="STAVB.ORG" class="artist-image">
+                <span class="year-stamp">2004</span>
+            </div>
+            <div class="image-container">
+                <img src="assets/images/Portrait3.jpeg" alt="STAVB.ORG" class="artist-image">
+                <span class="year-stamp">2010</span>
+            </div>
+            <div class="image-container">
+                <img src="assets/images/Portrait4.png" alt="STAVB.ORG" class="artist-image">
+                <span class="year-stamp">2023</span>
+            </div>
+        </div>
+        <div class="about-text">
+            <h3 class="about-title">Forged, Broken, Reborn</h3>
+            <div class="about-story">
+                <p class="story-paragraph">
+                    <i class="fas fa-music" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>
+                    Stavborg was forged in the year 2000, crawling out of a half-formed high-school band called <em>The Project</em>, hammering out raw riffs on tiny stages. That same year the path twisted into <em>The Family Grinders</em>, where a madman named Elvis dragged me deeper into the world of recording, noise-craft, and the violent alchemy of production.
+                </p>
+
+                <p class="story-paragraph">
+                    <i class="fas fa-guitar" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>
+                    The first real beast took shape: <em>Repulsivore</em>, a two-man onslaught with Erik. After its rupture, I went solitary—sharpening skills, hardening sound, carving out my own identity in the dark.
+                </p>
+
+                <p class="story-paragraph">
+                    <i class="fas fa-drum" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>
+                    Then came <em>Morbus</em>, another collaboration with Erik, reinforced by guitarist Jonas. Creative clashes tore it apart, but from the wreckage Jonas and I spawned <em>Odjur</em>—a monster that never fully rose but still left teeth marks.
+                </p>
+
+                <p class="story-paragraph">
+                    <i class="fas fa-microphone" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>
+                    When Odjur dissolved, I descended back into the solitary grind. Years later, after moving to Argentina, I re-emerged in a Gothenburg-leaning melodic death band. It died for reasons that stay buried.
+                </p>
+
+                <p class="story-paragraph">
+                    <i class="fas fa-headphones" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>
+                    In 2018 the silence finally snapped, and I returned to where this all began: alone, relentless, and uncompromising.
+                </p>
+
+                <p class="story-conclusion">
+                    <strong>Stavborg</strong>—solo, but never silent.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="stats-grid">
+        <div class="stat-item fade-in">
+            <div class="stat-number">24</div>
+            <div class="stat-label">Years Active</div>
+        </div>
+        <div class="stat-item fade-in">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Band Projects</div>
+        </div>
+        <div class="stat-item fade-in">
+            <div class="stat-number">Solo</div>
+            <div class="stat-label">Current Status</div>
+        </div>
+        <div class="stat-item fade-in">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Creative Drive</div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section class="section fade-in" id="contact">
+        <h2 class="section-title">Connect</h2>
+        <div class="social-links">
+            <a href="https://soundcloud.com/Stavborg" class="social-link" target="_blank" rel="noopener" title="SoundCloud">
+                <i class="fab fa-soundcloud"></i>
+            </a>
+            <a href="https://open.spotify.com/user/polecastle" class="social-link" target="_blank" rel="noopener" title="Spotify">
+                <i class="fab fa-spotify"></i>
+            </a>
+            <a href="https://www.youtube.com/@JonasStavborg" class="social-link" target="_blank" rel="noopener" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.instagram.com/suecologico/" class="social-link" target="_blank" rel="noopener" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://stavborg.bandcamp.com/" class="social-link" target="_blank" rel="noopener" title="Bandcamp">
+                <i class="fab fa-bandcamp"></i>
+            </a>
+            <a href="https://www.reverbnation.com/jonasstavborg" class="social-link" target="_blank" rel="noopener" title="ReverbNation">
+                <i class="fas fa-star"></i>
+            </a>
+        </div>
+        <div class="location-note">
+            <p><i class="fas fa-map-marker-alt"></i> Based in Buenos Aires, Argentina</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 STAVB.ORG. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', () => {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.style.opacity = '0';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 500);
+            }, 2000);
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Audio player functionality
+        let currentAudio = null;
+        let currentButton = null;
+
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const audioId = this.getAttribute('data-audio');
+                const audio = document.getElementById(audioId);
+                const icon = this.querySelector('i');
+                const progressBar = this.parentNode.querySelector('.progress');
+                const timeDisplay = this.parentNode.querySelector('.time');
+                
+                // Stop any currently playing audio
+                if (currentAudio && currentAudio !== audio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                    const currentIcon = currentButton.querySelector('i');
+                    currentIcon.classList.remove('fa-pause');
+                    currentIcon.classList.add('fa-play');
+                    const currentProgressBar = currentButton.parentNode.querySelector('.progress');
+                    currentProgressBar.style.width = '0%';
+                }
+                
+                if (audio.paused) {
+                    // Play audio
+                    audio.play();
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                    currentAudio = audio;
+                    currentButton = this;
+                    
+                    // Update progress bar and time
+                    audio.addEventListener('timeupdate', function() {
+                        const progress = (audio.currentTime / audio.duration) * 100;
+                        progressBar.style.width = progress + '%';
+                        
+                        const currentTime = formatTime(audio.currentTime);
+                        const duration = formatTime(audio.duration);
+                        timeDisplay.textContent = `${currentTime} / ${duration}`;
+                    });
+                    
+                    // Handle audio end
+                    audio.addEventListener('ended', function() {
+                        icon.classList.remove('fa-pause');
+                        icon.classList.add('fa-play');
+                        progressBar.style.width = '0%';
+                        audio.currentTime = 0;
+                        currentAudio = null;
+                        currentButton = null;
+                    });
+                    
+                } else {
+                    // Pause audio
+                    audio.pause();
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                    currentAudio = null;
+                    currentButton = null;
+                }
+            });
+        });
+
+        // Progress bar click to seek
+        document.querySelectorAll('.progress-bar').forEach(progressBar => {
+            progressBar.addEventListener('click', function(e) {
+                const audio = this.closest('.audio-player').querySelector('audio');
+                if (audio && audio.duration) {
+                    const rect = this.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const width = rect.width;
+                    const clickPercent = clickX / width;
+                    audio.currentTime = clickPercent * audio.duration;
+                }
+            });
+        });
+
+        // Format time helper function
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Dynamic title effect
+        let titleText = 'STAVB.ORG | Professional Metal Artist';
+        let titleCounter = 0;
+        setInterval(() => {
+            titleCounter++;
+            if (titleCounter % 10 === 0) {
+                document.title = titleCounter % 20 === 0 ? '🔥 STAVB.ORG 🔥' : titleText;
+            }
+        }, 1000);
+
+        // Pause other videos/audios when one plays
+document.addEventListener('play', function(e){
+  const media = e.target;
+  if (!(media.tagName === 'VIDEO' || media.tagName === 'AUDIO')) return;
+  document.querySelectorAll('video,audio').forEach(m=>{
+    if (m !== media && !m.paused) m.pause();
+  });
+}, true);
+
+        // Mobile nav toggle behavior (added)
+        (function(){
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    const isOpen = navMenu.classList.toggle('open');
+                    navToggle.classList.toggle('open', isOpen);
+                    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+
+                // Close menu when clicking a nav link
+                navMenu.querySelectorAll('a[href^="#"]').forEach(a => {
+                    a.addEventListener('click', () => {
+                        if (navMenu.classList.contains('open')) {
+                            navMenu.classList.remove('open');
+                            navToggle.classList.remove('open');
+                            navToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+
+                // Close when tapping outside the menu
+                document.addEventListener('click', (e) => {
+                    if (!navMenu.classList.contains('open')) return;
+                    const withinNav = e.target.closest('.nav-container');
+                    if (!withinNav) {
+                        navMenu.classList.remove('open');
+                        navToggle.classList.remove('open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                // Ensure correct state on resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768 && navMenu.classList.contains('open')) {
+                        navMenu.classList.remove('open');
+                        navToggle.classList.remove('open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
